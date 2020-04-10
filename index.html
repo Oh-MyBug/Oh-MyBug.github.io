@@ -111,15 +111,14 @@
       
 
       
-      <h3 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h3><blockquote>
+      <h3 id="1-前期准备"><a href="#1-前期准备" class="headerlink" title="1 前期准备"></a>1 前期准备</h3><blockquote>
 <p>1.GitHub账号注册（官网：<a href="https://github.com/" target="_blank" rel="noopener">https://github.com/</a>）<br>2.Node.js下载并安装（官网：<a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a>）<br>3.Git下载并安装（官网：<a href="https://git-scm.com/" target="_blank" rel="noopener">https://git-scm.com/</a>）</p>
 </blockquote>
 <p>推荐镜像：<br>    Node.js 镜像：<a href="http://npm.taobao.org/mirrors/node" target="_blank" rel="noopener">http://npm.taobao.org/mirrors/node</a><br>    Git镜像：<a href="https://npm.taobao.org/mirrors/git-for-windows/" target="_blank" rel="noopener">https://npm.taobao.org/mirrors/git-for-windows/</a></p>
-<h3 id="Git配置和SSH"><a href="#Git配置和SSH" class="headerlink" title="Git配置和SSH"></a>Git配置和SSH</h3><p>1.<strong>配置Git信息</strong>：桌面右键点击“Git Bash Here”打开Git命令行窗口</p>
+<h3 id="2-Git配置和SSH"><a href="#2-Git配置和SSH" class="headerlink" title="2 Git配置和SSH"></a>2 Git配置和SSH</h3><h4 id="2-1-配置Git信息"><a href="#2-1-配置Git信息" class="headerlink" title="2.1 配置Git信息"></a>2.1 配置Git信息</h4><p>桌面右键点击“Git Bash Here”打开Git命令行窗口</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//配置user信息</span></span><br><span class="line">$ git config --global user.name <span class="string">"Oh-MyBug"</span>   <span class="comment">//OhMyBug改为你的GitHub用户名</span></span><br><span class="line">$ git config -- global user.email <span class="string">"OhMyBug@163.com"</span> <span class="comment">//OhMyBug@163.com改为你的邮箱地址</span></span><br><span class="line"><span class="comment">//检查配置信息是否正确</span></span><br><span class="line">$ git config --global user.name</span><br><span class="line">Oh_MyBug</span><br><span class="line"></span><br><span class="line">$ git config --global user.email </span><br><span class="line">OhMyBug@<span class="number">163</span>.com</span><br></pre></td></tr></table></figure>
 
-<p>2.<strong>配置SSH key</strong>：</p>
-<p>  <strong>step 1:</strong> GitHub新建仓库，仓库名为“Oh-MyBug.github.io” </p>
+<h4 id="2-2-配置SSH-key"><a href="#2-2-配置SSH-key" class="headerlink" title="2.2 配置SSH key"></a>2.2 配置SSH key</h4><p>  <strong>step 1:</strong> GitHub新建仓库，仓库名为“Oh-MyBug.github.io” </p>
 <p>  （Oh_MyBug改为你的GitHub用户名 <strong>注意：一定要是用户名</strong>！！！）</p>
 <p>  <strong>step 2:</strong> 回到Git界面，输入命令：</p>
   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">"Oh-MyBug@163.com"</span></span><br></pre></td></tr></table></figure>
@@ -130,7 +129,7 @@
   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ssh git<span class="meta">@github</span>.com</span><br><span class="line">$ ssh -T git<span class="meta">@github</span>.com</span><br></pre></td></tr></table></figure>
 
 <p>  显示successfully即配置成功！</p>
-<h3 id="Hexo博客框架安装"><a href="#Hexo博客框架安装" class="headerlink" title="Hexo博客框架安装"></a>Hexo博客框架安装</h3><p><strong>step 1:</strong> Git界面输入命令：</p>
+<h3 id="3-Hexo博客框架安装"><a href="#3-Hexo博客框架安装" class="headerlink" title="3 Hexo博客框架安装"></a>3 Hexo博客框架安装</h3><p><strong>step 1:</strong> Git界面输入命令：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm -v</span><br><span class="line"><span class="number">6.14</span><span class="number">.4</span></span><br></pre></td></tr></table></figure>
 
 <p>返回版本号即说明已安装（一般安装的Node自带npm）</p>
@@ -159,7 +158,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 
 <p><strong>step 10:</strong> 浏览器输入博客地址：Oh-MyBug.github.io，显示出博客界面就说明hexo博客框架搭建成功啦！！！</p>
-<h3 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h3><h4 id="问题一"><a href="#问题一" class="headerlink" title="问题一"></a>问题一</h4><p><strong>问题描述</strong>：使用GitHub创建好个人主页后访问报错：404  There isn’t a GitHub Pages site here.</p>
+<h3 id="4-常见问题"><a href="#4-常见问题" class="headerlink" title="4 常见问题"></a>4 常见问题</h3><h4 id="4-1-问题一"><a href="#4-1-问题一" class="headerlink" title="4.1 问题一"></a>4.1 问题一</h4><p><strong>问题描述</strong>：使用GitHub创建好个人主页后访问报错：404  There isn’t a GitHub Pages site here.</p>
 <p><strong>问题原因</strong>：出现该问题的原因是创建的Oh-MyBug/Oh-MyBug.github.io项目中没有内容。</p>
 <p><strong>解决方案</strong>：</p>
 <p><strong>step 1:</strong> 进入仓库，点击Settings</p>
