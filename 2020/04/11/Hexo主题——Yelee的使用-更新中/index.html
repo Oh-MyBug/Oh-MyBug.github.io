@@ -381,22 +381,28 @@
 </div>
 
 <h3 id="3-2-文章摘要"><a href="#3-2-文章摘要" class="headerlink" title="3.2 文章摘要"></a>3.2 文章摘要</h3><p>Yelee主题可使用两种方式在首页显示文章摘要而不是全文，什么意思呢？意思就是如果没有使用这两种方式，博客主页将会是如下图所示:</p>
-<div style="width:40%;margin:auto">
+<div style="width:70%;margin:auto">
 <img src="/2020/04/11/Hexo%E4%B8%BB%E9%A2%98%E2%80%94%E2%80%94Yelee%E7%9A%84%E4%BD%BF%E7%94%A8-%E6%9B%B4%E6%96%B0%E4%B8%AD/7.jpg" class="" title="文章未设置摘要时">
 </div>
 
 <p>使用文章摘要后，博客主页将会是如下图所示：</p>
-<div style="width:40%;margin:auto">
+<div style="width:70%;margin:auto">
 <img src="/2020/04/11/Hexo%E4%B8%BB%E9%A2%98%E2%80%94%E2%80%94Yelee%E7%9A%84%E4%BD%BF%E7%94%A8-%E6%9B%B4%E6%96%B0%E4%B8%AD/8.jpg" class="" title="文章设置摘要时">
 </div>
 
-<p>怎么设置呢？这里介绍其中一种也就是我在现在在用的方式：<strong>Front-matter中添加description字段</strong></p>
+<p>怎么设置呢？这里介绍其中一种也就是我在现在在用的方式：<strong>Front-matter中添加description字段</strong>（另一种方法我没有使用过，具体可看作者写的<a href="http://moxfive.coding.me/yelee/" target="_blank" rel="noopener">GitBook</a>）</p>
+<p><strong>PS</strong>: Front-matter 是文件最上方以 — 分隔的区域，用于指定个别文件的变量</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo个人博客搭建</span><br><span class="line">comments: true</span><br><span class="line">date: 2020-04-09 21:16:25</span><br><span class="line">updated: 2020-04-09 21:16:25</span><br><span class="line">tags: </span><br><span class="line">- Hexo</span><br><span class="line">categories:</span><br><span class="line">description: &quot;试试水嘻嘻....使用Hexo + GitHub搭建个人博客&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
 
-<p>我们也可以在Hexo根目录的/scaffolds文件夹中配置draft.md、page.md、post.md的Front-matter，这样每次新建特定layout的文章时，都会产生不同的Front-matter</p>
-<div style="width:40%;margin:auto">
+<p>我们也可以在Hexo根目录的/scaffolds文件夹中配置draft.md、page.md、post.md的Front-matter，这样每次新建特定layout（draft、post）的文章时，都会产生和[layout].md文件中相同的Front-matter~</p>
+<div style="width:70%;margin:auto">
 <img src="/2020/04/11/Hexo%E4%B8%BB%E9%A2%98%E2%80%94%E2%80%94Yelee%E7%9A%84%E4%BD%BF%E7%94%A8-%E6%9B%B4%E6%96%B0%E4%B8%AD/9.jpg" class="" title="post.md中的Front-matter">
 </div>
+
+<p><strong>PS</strong>:  通过 description 添加的摘要只能为纯文本；description 中的内容加引号，可以避免一些程序错误，例如当内容里包含英文冒号时。</p>
+<h3 id="3-3-Valine评论系统"><a href="#3-3-Valine评论系统" class="headerlink" title="3.3 Valine评论系统"></a>3.3 Valine评论系统</h3><h4 id="3-3-1-前言"><a href="#3-3-1-前言" class="headerlink" title="3.3.1 前言"></a>3.3.1 前言</h4><p>&emsp;&emsp;Yelee主题默认支持三款评论系统：Disqus，多说和友言评论，而目前多说和友言已经不能用了，Disqus也需要科学上网才可以加载使用，因此，我们需要再寻找其他评论系统来填补这一空缺。</p>
+<p>&emsp;&emsp;目前我了解的评论系统有Valine评论系统和Gitalk和Valine评论系统，</p>
+
       
     </div>
     
@@ -437,7 +443,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-前言"><span class="toc-text">1.前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Yelee的使用"><span class="toc-text">2.Yelee的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-安装主题"><span class="toc-text">2.1 安装主题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-1-主题下载"><span class="toc-text">2.1.1 主题下载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-2-主题切换"><span class="toc-text">2.1.2 主题切换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-3-主题预览"><span class="toc-text">2.1.3 主题预览</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-语言切换"><span class="toc-text">2.3 语言切换</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Yelee主题修改"><span class="toc-text">3. Yelee主题修改</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-个人头像"><span class="toc-text">3.1 个人头像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-文章摘要"><span class="toc-text">3.2 文章摘要</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-前言"><span class="toc-text">1.前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Yelee的使用"><span class="toc-text">2.Yelee的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-安装主题"><span class="toc-text">2.1 安装主题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-1-主题下载"><span class="toc-text">2.1.1 主题下载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-2-主题切换"><span class="toc-text">2.1.2 主题切换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-3-主题预览"><span class="toc-text">2.1.3 主题预览</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-语言切换"><span class="toc-text">2.3 语言切换</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Yelee主题修改"><span class="toc-text">3. Yelee主题修改</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-个人头像"><span class="toc-text">3.1 个人头像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-文章摘要"><span class="toc-text">3.2 文章摘要</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-Valine评论系统"><span class="toc-text">3.3 Valine评论系统</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-1-前言"><span class="toc-text">3.3.1 前言</span></a></li></ol></li></ol></li></ol>
         
     </div>
     <style>
