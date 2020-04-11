@@ -39,6 +39,7 @@
 <meta property="og:image" content="https://oh-mybug.github.io/2020/04/11/Hexo%E4%B8%BB%E9%A2%98%E2%80%94%E2%80%94Yelee%E7%9A%84%E4%BD%BF%E7%94%A8-%E6%9B%B4%E6%96%B0%E4%B8%AD/16.jpg">
 <meta property="og:image" content="https://oh-mybug.github.io/2020/04/11/Hexo%E4%B8%BB%E9%A2%98%E2%80%94%E2%80%94Yelee%E7%9A%84%E4%BD%BF%E7%94%A8-%E6%9B%B4%E6%96%B0%E4%B8%AD/17.jpg">
 <meta property="og:image" content="https://oh-mybug.github.io/2020/04/11/Hexo%E4%B8%BB%E9%A2%98%E2%80%94%E2%80%94Yelee%E7%9A%84%E4%BD%BF%E7%94%A8-%E6%9B%B4%E6%96%B0%E4%B8%AD/18.jpg">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/04/11/Hexo%E4%B8%BB%E9%A2%98%E2%80%94%E2%80%94Yelee%E7%9A%84%E4%BD%BF%E7%94%A8-%E6%9B%B4%E6%96%B0%E4%B8%AD/19.jpg">
 <meta property="article:published_time" content="2020-04-10T17:36:08.000Z">
 <meta property="article:modified_time" content="2020-04-10T17:36:08.000Z">
 <meta property="article:author" content="Oh_MyBug">
@@ -506,7 +507,20 @@
 
 <p>大功告成，执行hexo g -d即可看到Valine的评论框啦！</p>
 <h4 id="3-3-Valine的使用"><a href="#3-3-Valine的使用" class="headerlink" title="3.3 Valine的使用"></a>3.3 Valine的使用</h4><p>评论框支持三个选项：昵称、邮箱、网址。<br>昵称：展示在评论区的昵称；<br>邮箱：填写邮箱后若有消息回复即可收到通知（建议填写）；且该邮箱若为在Gravatar注册的邮箱，填写后可显示自定义的头像；<br>网址：可填写个人主页，评论后可通过点击昵称跳转到该网址。<br>别忘了，最重要的，Valine支持Markdown语法哦，快在评论区留言吧～</p>
-<p><strong>PS:</strong> 只有填写了邮箱才可以收到回复的邮件提醒哈～（这不是废话么……）</p>
+<p><strong>PS:</strong> 只有填写了邮箱才可以收到回复的邮件提醒哈～</p>
+<h2 id="4-常见问题"><a href="#4-常见问题" class="headerlink" title="4. 常见问题"></a>4. 常见问题</h2><h3 id="4-1-主页没有列表显示，完全为空"><a href="#4-1-主页没有列表显示，完全为空" class="headerlink" title="4.1 主页没有列表显示，完全为空"></a>4.1 主页没有列表显示，完全为空</h3><p>在/yelee/_config.yml配置文件中找到search字段修改#on:true为on:true就可以了</p>
+<div style="width:70%;margin:auto">
+<img src="/2020/04/11/Hexo%E4%B8%BB%E9%A2%98%E2%80%94%E2%80%94Yelee%E7%9A%84%E4%BD%BF%E7%94%A8-%E6%9B%B4%E6%96%B0%E4%B8%AD/19.jpg" class="" title="search字段位置">
+</div>
+
+<h3 id="4-2-GitHub图标无法显示"><a href="#4-2-GitHub图标无法显示" class="headerlink" title="4.2 GitHub图标无法显示"></a>4.2 GitHub图标无法显示</h3><p><strong>Step 1:</strong> 首先下载一个GitHub图标，放在/yelee/source/img/目录下，命名为GitHub.png，注意是GitHub，而不是Github和github；</p>
+<p><strong>Step 2:</strong> 接下来删除在/yelee/source/css/_partial/customise/social-icon.styl的46-50行，然后在img-logo = 添加GitHub white 100。</p>
+<p>GitHub white 100 的意思是github添加白色背景且透明度为100，背景可以自行选择</p>
+<p><strong>Step 3:</strong> 清理缓存，然后生成静态文件并部署</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+
+<p><strong>PS:</strong> 如果按照上面的步骤操作，是可以出现GitHub图片的，但是如果你一开始图片的命名就出错了，就有可能操作失败…比如我一开始就将GitHub图片命名为了”Github.png”，然后再重命名为”GitHub.png”的话，是不会成功的，这时检查GitHub仓库里面的img目录会发现GitHub图片的命名仍然为”Github.png”，而且我输入”<a href="https://oh-mybug.github.io/img/GitHub.png&quot;是无法显示图片的，只会显示404页面，但是输入&quot;https://oh-mybug.github.io/img/Github.png&quot;就可以出现GirHub图片。因此，GitHub图片重命名以后重新部署是不会成功的。">https://oh-mybug.github.io/img/GitHub.png&quot;是无法显示图片的，只会显示404页面，但是输入&quot;https://oh-mybug.github.io/img/Github.png&quot;就可以出现GirHub图片。因此，GitHub图片重命名以后重新部署是不会成功的。</a></p>
+<p>如果真的遇到了上面所说的问题，可以试试下面我尝试过的方法：</p>
 
       
     </div>
@@ -548,7 +562,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-前言"><span class="toc-text">1.前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Yelee的使用"><span class="toc-text">2.Yelee的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-安装主题"><span class="toc-text">2.1 安装主题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-1-主题下载"><span class="toc-text">2.1.1 主题下载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-2-主题切换"><span class="toc-text">2.1.2 主题切换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-3-主题预览"><span class="toc-text">2.1.3 主题预览</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-语言切换"><span class="toc-text">2.3 语言切换</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Yelee主题修改"><span class="toc-text">3. Yelee主题修改</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-个人头像"><span class="toc-text">3.1 个人头像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-文章摘要"><span class="toc-text">3.2 文章摘要</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-Valine评论系统"><span class="toc-text">3.3 Valine评论系统</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-1-前言"><span class="toc-text">3.3.1 前言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-Valine配置"><span class="toc-text">3.2 Valine配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-Valine的使用"><span class="toc-text">3.3 Valine的使用</span></a></li></ol></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-前言"><span class="toc-text">1.前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Yelee的使用"><span class="toc-text">2.Yelee的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-安装主题"><span class="toc-text">2.1 安装主题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-1-主题下载"><span class="toc-text">2.1.1 主题下载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-2-主题切换"><span class="toc-text">2.1.2 主题切换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-3-主题预览"><span class="toc-text">2.1.3 主题预览</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-语言切换"><span class="toc-text">2.3 语言切换</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Yelee主题修改"><span class="toc-text">3. Yelee主题修改</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-个人头像"><span class="toc-text">3.1 个人头像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-文章摘要"><span class="toc-text">3.2 文章摘要</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-Valine评论系统"><span class="toc-text">3.3 Valine评论系统</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-1-前言"><span class="toc-text">3.3.1 前言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-Valine配置"><span class="toc-text">3.2 Valine配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-Valine的使用"><span class="toc-text">3.3 Valine的使用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-常见问题"><span class="toc-text">4. 常见问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-主页没有列表显示，完全为空"><span class="toc-text">4.1 主页没有列表显示，完全为空</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-GitHub图标无法显示"><span class="toc-text">4.2 GitHub图标无法显示</span></a></li></ol></li></ol>
         
     </div>
     <style>
