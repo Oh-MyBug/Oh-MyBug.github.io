@@ -30,6 +30,8 @@
 <meta property="og:image" content="https://oh-mybug.github.io/2020/04/11/Hexo%E4%B8%BB%E9%A2%98%E2%80%94%E2%80%94Yelee%E7%9A%84%E4%BD%BF%E7%94%A8-%E6%9B%B4%E6%96%B0%E4%B8%AD/7.jpg">
 <meta property="og:image" content="https://oh-mybug.github.io/2020/04/11/Hexo%E4%B8%BB%E9%A2%98%E2%80%94%E2%80%94Yelee%E7%9A%84%E4%BD%BF%E7%94%A8-%E6%9B%B4%E6%96%B0%E4%B8%AD/8.jpg">
 <meta property="og:image" content="https://oh-mybug.github.io/2020/04/11/Hexo%E4%B8%BB%E9%A2%98%E2%80%94%E2%80%94Yelee%E7%9A%84%E4%BD%BF%E7%94%A8-%E6%9B%B4%E6%96%B0%E4%B8%AD/9.jpg">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/04/11/Hexo%E4%B8%BB%E9%A2%98%E2%80%94%E2%80%94Yelee%E7%9A%84%E4%BD%BF%E7%94%A8-%E6%9B%B4%E6%96%B0%E4%B8%AD/10.jpg">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/04/11/Hexo%E4%B8%BB%E9%A2%98%E2%80%94%E2%80%94Yelee%E7%9A%84%E4%BD%BF%E7%94%A8-%E6%9B%B4%E6%96%B0%E4%B8%AD/11.jpg">
 <meta property="article:published_time" content="2020-04-10T17:36:08.000Z">
 <meta property="article:modified_time" content="2020-04-10T17:36:08.000Z">
 <meta property="article:author" content="Oh_MyBug">
@@ -402,45 +404,14 @@
 <p><strong>PS</strong>:  通过 description 添加的摘要只能为纯文本；description 中的内容加引号，可以避免一些程序错误，例如当内容里包含英文冒号时。</p>
 <h3 id="3-3-Valine评论系统"><a href="#3-3-Valine评论系统" class="headerlink" title="3.3 Valine评论系统"></a>3.3 Valine评论系统</h3><h4 id="3-3-1-前言"><a href="#3-3-1-前言" class="headerlink" title="3.3.1 前言"></a>3.3.1 前言</h4><p>&emsp;&emsp;Yelee主题默认支持三款评论系统：Disqus，多说和友言评论，而目前多说和友言已经不能用了，Disqus也需要科学上网才可以加载使用，因此，我们需要再寻找其他评论系统来填补这一空缺。</p>
 <p>&emsp;&emsp;目前我了解的评论系统有Valine评论系统和Gitalk和Valine评论系统。</p>
-<p>Valine 诞生于2017年8月7日，是一款基于LeanCloud的快速、简洁且高效的无后端评论系统。理论上支持但不限于静态博客，目前已有Hexo、Jekyll、Typecho、Hugo、Ghost 等博客程序在使用Valine。</p>
-<p>Gitalk是基于GitHub Issue和Preact的现代评论组件。</p>
-<table>
-<thead>
-<tr>
-<th align="left">Valine</th>
-<th align="left">Gitalk</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">快速</td>
-<td align="left">使用github帐户进行身份验证</td>
-</tr>
-<tr>
-<td align="left">安全</td>
-<td align="left">无服务器，所有评论将存储为github问题</td>
-</tr>
-<tr>
-<td align="left">Emoji 😉</td>
-<td align="left">个人和组织github项目均可用于存储评论</td>
-</tr>
-<tr>
-<td align="left">无后端实现</td>
-<td align="left">本地化，支持多种语言[en，zh-CN，zh-TW，es-ES，fr，ru，de]</td>
-</tr>
-<tr>
-<td align="left">MarkDown 全语法支持</td>
-<td align="left">类似于Facebook的无干扰模式（可以通过distractionFreeMode选件启用）</td>
-</tr>
-<tr>
-<td align="left">轻量易用(~15kb gzipped)</td>
-<td align="left">热键提交评论（cmd:ctrl + Enter）</td>
-</tr>
-<tr>
-<td align="left">文章阅读量统计 v1.2.0+</td>
-<td align="left"></td>
-</tr>
-</tbody></table>
+<p>&emsp;&emsp;Valine 是一款基于LeanCloud的快速、简洁且高效的无后端评论系统。理论上支持但不限于静态博客，目前已有Hexo、Jekyll、Typecho、Hugo、Ghost 等博客程序在使用Valine。</p>
+<div style="width:70%;margin:auto">
+<img src="/2020/04/11/Hexo%E4%B8%BB%E9%A2%98%E2%80%94%E2%80%94Yelee%E7%9A%84%E4%BD%BF%E7%94%A8-%E6%9B%B4%E6%96%B0%E4%B8%AD/10.jpg" class="" title="Valine界面">
+</div>
 
+<p>&emsp;&emsp;Gitalk是基于GitHub Issue和Preact的现代评论组件。</p>
+<div style="width:70%;margin:auto">
+<img src="/2020/04/11/Hexo%E4%B8%BB%E9%A2%98%E2%80%94%E2%80%94Yelee%E7%9A%84%E4%BD%BF%E7%94%A8-%E6%9B%B4%E6%96%B0%E4%B8%AD/11.jpg" class="" title="%Gitalk界面} &lt;&#x2F;div&gt; &lt;table&gt; &lt;thead&gt; &lt;tr&gt; &lt;th align&#x3D;left&gt;Valine&lt;&#x2F;th&gt; &lt;th align&#x3D;left&gt;Gitalk&lt;&#x2F;th&gt; &lt;&#x2F;tr&gt; &lt;&#x2F;thead&gt; &lt;tbody&gt;&lt;tr&gt; &lt;td align&#x3D;left&gt;快速&lt;&#x2F;td&gt; &lt;td align&#x3D;left&gt;使用github帐户进行身份验证&lt;&#x2F;td&gt; &lt;&#x2F;tr&gt; &lt;tr&gt; &lt;td align&#x3D;left&gt;安全&lt;&#x2F;td&gt; &lt;td align&#x3D;left&gt;无服务器，所有评论将存储为github问题&lt;&#x2F;td&gt; &lt;&#x2F;tr&gt; &lt;tr&gt; &lt;td align&#x3D;left&gt;Emoji 😉&lt;&#x2F;td&gt; &lt;td align&#x3D;left&gt;个人和组织github项目均可用于存储评论&lt;&#x2F;td&gt; &lt;&#x2F;tr&gt; &lt;tr&gt; &lt;td align&#x3D;left&gt;无后端实现&lt;&#x2F;td&gt; &lt;td align&#x3D;left&gt;本地化，支持多种语言[en，zh-CN，zh-TW，es-ES，fr，ru，de]&lt;&#x2F;td&gt; &lt;&#x2F;tr&gt; &lt;tr&gt; &lt;td align&#x3D;left&gt;MarkDown 全语法支持&lt;&#x2F;td&gt; &lt;td align&#x3D;left&gt;类似于Facebook的无干扰模式（可以通过distractionFreeMode选件启用）&lt;&#x2F;td&gt; &lt;&#x2F;tr&gt; &lt;tr&gt; &lt;td align&#x3D;left&gt;轻量易用(~15kb gzipped)&lt;&#x2F;td&gt; &lt;td align&#x3D;left&gt;热键提交评论（cmd:ctrl + Enter）&lt;&#x2F;td&gt; &lt;&#x2F;tr&gt; &lt;tr&gt; &lt;td align&#x3D;left&gt;文章阅读量统计 v1.2.0+&lt;&#x2F;td&gt; &lt;td align&#x3D;left&gt;&lt;&#x2F;td&gt; &lt;&#x2F;tr&gt; &lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt; &lt;p&gt;&amp;emsp;&amp;emsp;看了Valine和Gitalk的优点对比，对Gitalk有点心动了哈哈，但是因为Valine先入为主，所以先记录一下Valine是如何配置的吧！之后再尝试配置Gitalk体验一下。目前只是体验了Valine评论系统，感觉Valine确实挺轻便的，而且样式也很美观，支持Markdown格式，但是消息提醒这一方面确实有不足的地方。&lt;&#x2F;p&gt; &lt;p&gt;下面说一下Valine的配置步骤吧~&lt;&#x2F;p&gt; &lt;h4 id&#x3D;3-2-Valine配置&gt;&lt;a href&#x3D;#3-2-Valine配置 class&#x3D;headerlink title&#x3D;3.2 Valine配置&gt;&lt;&#x2F;a&gt;3.2">
       
     </div>
     
