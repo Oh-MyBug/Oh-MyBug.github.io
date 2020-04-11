@@ -522,6 +522,8 @@
 
 <p><strong>PS:</strong> 如果按照上面的步骤操作，是可以出现GitHub图片的，但是如果你一开始图片的命名就出错了，就有可能操作失败…比如我一开始就将GitHub图片命名为了”Github.png”，然后再重命名为”GitHub.png”的话，是不会成功的，这时检查GitHub仓库里面的img目录会发现GitHub图片的命名仍然为”Github.png”，而且我输入”<a href="https://oh-mybug.github.io/img/GitHub.png&quot;是无法显示图片的，只会显示404页面，但是输入&quot;https://oh-mybug.github.io/img/Github.png&quot;就可以出现GitHub图片。因此，GitHub图片重命名以后重新部署是不会成功的。">https://oh-mybug.github.io/img/GitHub.png&quot;是无法显示图片的，只会显示404页面，但是输入&quot;https://oh-mybug.github.io/img/Github.png&quot;就可以出现GitHub图片。因此，GitHub图片重命名以后重新部署是不会成功的。</a></p>
 <p>如果真的遇到了上面所说的问题，可以试试下面我尝试过并且问题得到解决的方法：更换另一个主题，使得另一个主题的img文件夹在GitHub仓库中覆盖原先的img文件夹，确保img中不存在”Github.png”，然后再将主题更换回yelee主题并清空缓存，重新部署。最终需要的结果就是GitHub仓库中的img文件夹的GitHub图标的名字为”GitHub.png”。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+
 <p>这样问题就解决啦！</p>
 <div style="width:70%;margin:auto">
 <img src="/2020/04/11/Hexo%E4%B8%BB%E9%A2%98%E2%80%94%E2%80%94Yelee%E7%9A%84%E4%BD%BF%E7%94%A8-%E6%9B%B4%E6%96%B0%E4%B8%AD/20.jpg" class="" title="最终结果">
