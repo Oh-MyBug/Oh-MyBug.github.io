@@ -41,6 +41,10 @@
 <meta property="og:image" content="https://oh-mybug.github.io/2020/04/11/Hexo%E4%B8%BB%E9%A2%98%E2%80%94%E2%80%94Yelee%E7%9A%84%E4%BD%BF%E7%94%A8-%E6%9B%B4%E6%96%B0%E4%B8%AD/18.jpg">
 <meta property="og:image" content="https://oh-mybug.github.io/2020/04/11/Hexo%E4%B8%BB%E9%A2%98%E2%80%94%E2%80%94Yelee%E7%9A%84%E4%BD%BF%E7%94%A8-%E6%9B%B4%E6%96%B0%E4%B8%AD/19.jpg">
 <meta property="og:image" content="https://oh-mybug.github.io/2020/04/11/Hexo%E4%B8%BB%E9%A2%98%E2%80%94%E2%80%94Yelee%E7%9A%84%E4%BD%BF%E7%94%A8-%E6%9B%B4%E6%96%B0%E4%B8%AD/20.jpg">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/04/11/Hexo%E4%B8%BB%E9%A2%98%E2%80%94%E2%80%94Yelee%E7%9A%84%E4%BD%BF%E7%94%A8-%E6%9B%B4%E6%96%B0%E4%B8%AD/21.jpg">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/04/11/Hexo%E4%B8%BB%E9%A2%98%E2%80%94%E2%80%94Yelee%E7%9A%84%E4%BD%BF%E7%94%A8-%E6%9B%B4%E6%96%B0%E4%B8%AD/22.jpg">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/04/11/Hexo%E4%B8%BB%E9%A2%98%E2%80%94%E2%80%94Yelee%E7%9A%84%E4%BD%BF%E7%94%A8-%E6%9B%B4%E6%96%B0%E4%B8%AD/23.jpg">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/04/11/Hexo%E4%B8%BB%E9%A2%98%E2%80%94%E2%80%94Yelee%E7%9A%84%E4%BD%BF%E7%94%A8-%E6%9B%B4%E6%96%B0%E4%B8%AD/24.jpg">
 <meta property="article:published_time" content="2020-04-10T17:36:08.000Z">
 <meta property="article:modified_time" content="2020-04-10T17:36:08.000Z">
 <meta property="article:author" content="Oh_MyBug">
@@ -533,7 +537,27 @@
 </div>
 
 <p><strong>参考资料</strong>：<br><a href="https://zhouhangzooo.github.io/2019/04/20/hexo%E6%98%BE%E7%A4%BAgithub%E5%9B%BE%E6%A0%87%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" target="_blank" rel="noopener">hexo显示github图标解决方法</a></p>
-<h3 id="4-3-不蒜子统计无法显示"><a href="#4-3-不蒜子统计无法显示" class="headerlink" title="4.3 不蒜子统计无法显示"></a>4.3 不蒜子统计无法显示</h3>
+<h3 id="4-3-不蒜子统计无法显示"><a href="#4-3-不蒜子统计无法显示" class="headerlink" title="4.3 不蒜子统计无法显示"></a>4.3 不蒜子统计无法显示</h3><div style="width:70%;margin:auto">
+<img src="/2020/04/11/Hexo%E4%B8%BB%E9%A2%98%E2%80%94%E2%80%94Yelee%E7%9A%84%E4%BD%BF%E7%94%A8-%E6%9B%B4%E6%96%B0%E4%B8%AD/21.jpg" class="" title="不蒜子统计无法显示">
+</div>
+
+<p>在使用Yelee的时候会发现，按F12打开控制台会出现上图这样子的错误，然后下图看似正常的博客主页其实有一处功能是没有显示出来的！那就是不蒜子统计数据…</p>
+<div style="width:70%;margin:auto">
+<img src="/2020/04/11/Hexo%E4%B8%BB%E9%A2%98%E2%80%94%E2%80%94Yelee%E7%9A%84%E4%BD%BF%E7%94%A8-%E6%9B%B4%E6%96%B0%E4%B8%AD/22.jpg" class="" title="不蒜子统计无法显示">
+</div>
+
+<p>不蒜子是什么呢？简单来说不蒜子是一个用于网站计数的API，静态网站建站现在有很多快速的技术和平台，但静态是优点也有缺点，由于是静态的，一些动态的内容如评论、计数等等模块就需要借助外来平台，</p>
+<p>为什么会报错呢？原因如下图（来自<a href="http://ibruce.info/2015/04/04/busuanzi/" target="_blank" rel="noopener">不蒜子</a>）：</p>
+<div style="width:70%;margin:auto">
+<img src="/2020/04/11/Hexo%E4%B8%BB%E9%A2%98%E2%80%94%E2%80%94Yelee%E7%9A%84%E4%BD%BF%E7%94%A8-%E6%9B%B4%E6%96%B0%E4%B8%AD/23.jpg" class="" title="七牛云强制过期原有域名">
+</div>
+
+<p>具体解决方法：打开/yelee/layout/_partial/after-footer.ejs，然后修改代码为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script async src&#x3D;&quot;https:&#x2F;&#x2F;busuanzi.ibruce.info&#x2F;busuanzi&#x2F;2.3&#x2F;busuanzi.pure.mini.js&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<div style="width:70%;margin:auto">
+<img src="/2020/04/11/Hexo%E4%B8%BB%E9%A2%98%E2%80%94%E2%80%94Yelee%E7%9A%84%E4%BD%BF%E7%94%A8-%E6%9B%B4%E6%96%B0%E4%B8%AD/24.jpg" class="" title="代码修改位置">
+</div>
       
     </div>
     
@@ -772,7 +796,7 @@ MathJax.Hub.Queue(function() {
     
 </script>
 
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
   </div>
 </body>
