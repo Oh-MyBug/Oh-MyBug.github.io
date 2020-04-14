@@ -22,6 +22,7 @@
 <meta property="og:site_name" content="Oh_MyBug">
 <meta property="og:description" content="学习进程过程中的笔记，知识点：进程控制、进程同步、管程控制、进程通信以及线程">
 <meta property="og:image" content="https://oh-mybug.github.io/2020/04/14/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86-%E6%9B%B4%E6%96%B0%E4%B8%AD/1.png">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/04/14/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86-%E6%9B%B4%E6%96%B0%E4%B8%AD/2.png">
 <meta property="article:published_time" content="2020-04-14T04:15:14.000Z">
 <meta property="article:modified_time" content="2020-04-14T04:15:14.000Z">
 <meta property="article:author" content="Oh_MyBug">
@@ -296,11 +297,26 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="1-进程的基本概念"><a href="#1-进程的基本概念" class="headerlink" title="1. 进程的基本概念"></a>1. 进程的基本概念</h2><h3 id="1-1-程序的顺序执行及其特征"><a href="#1-1-程序的顺序执行及其特征" class="headerlink" title="1.1. 程序的顺序执行及其特征"></a>1.1. 程序的顺序执行及其特征</h3><h4 id="1-1-1-程序的顺序执行"><a href="#1-1-1-程序的顺序执行" class="headerlink" title="1.1.1 程序的顺序执行"></a>1.1.1 程序的顺序执行</h4><p>&emsp;&emsp;仅当前一操作（程序段）执行完后，才能执行后继操作。例如，在进行计算时，必须先输入(Input)用户的程序和数据，然后进行计算(Calculate)，最后才能打印(Print)结果。</p>
+        <h2 id="1-进程的基本概念"><a href="#1-进程的基本概念" class="headerlink" title="1. 进程的基本概念"></a>1. 进程的基本概念</h2><h3 id="1-1-程序的顺序执行及其特征"><a href="#1-1-程序的顺序执行及其特征" class="headerlink" title="1.1. 程序的顺序执行及其特征"></a>1.1. 程序的顺序执行及其特征</h3><h4 id="1-1-1。-程序的顺序执行"><a href="#1-1-1。-程序的顺序执行" class="headerlink" title="1.1.1。 程序的顺序执行"></a>1.1.1。 程序的顺序执行</h4><p>&emsp;&emsp;仅当前一操作（程序段）执行完后，才能执行后继操作。例如，在进行计算时，必须先输入(Input)用户的程序和数据，然后进行计算(Calculate)，最后才能打印(Print)结果。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">S1:a : &#x3D; x+y;</span><br><span class="line">S2:b : &#x3D; a-5;</span><br><span class="line">S3:c : &#x3D; b+1;</span><br></pre></td></tr></table></figure>
 <div style="width:70%;margin:auto">
 <img src="/2020/04/14/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86-%E6%9B%B4%E6%96%B0%E4%B8%AD/1.png" class="" title="程序的执行顺序">
 </div>
+
+<p>程序独占处理机顺序执行时<strong>特征</strong>：</p>
+<ul>
+<li><strong>顺序性</strong>：程序各程序段严格按照规定的顺序执行</li>
+<li><strong>封闭性</strong>：程序运行时机内各资源只受该程序控制而改变，执行结果不受外界因素影响</li>
+<li><strong>可再现性</strong>：只要程序执行环境和初始条件相同，程序多次执行，可获得相同结果</li>
+</ul>
+<h4 id="1-1-2-前趋图"><a href="#1-1-2-前趋图" class="headerlink" title="1.1.2. 前趋图"></a>1.1.2. 前趋图</h4><p>&emsp;&emsp;前趋图(Precedence Graph)是一个有向无循环图，记为DAG(Directed Acyclic Graph)，用于描述进程之间执行的前后关系。图中的每个结点可用于描述一个程序段或进程，乃至一条语句；结点间的有向边则用于表示两个结点之间存在的偏序(Partial Order)或前趋关系(Precedence Relation)”$\rightarrow$”</p>
+<p>&emsp;&emsp;$\rightarrow={(P_i,P_j)|P_i\ must\ complete\ before\ P_j\ may\ start}$，如果$(P_i,P_j)\in\rightarrow$，可写成$P_i\rightarrow P_j$，称$P_i$是$P_j$的<strong>直接前趋</strong>，而称$P_j$是$P_i$的<strong>直接后继</strong>。在前趋图中，把没有前趋的结点称为<strong>初始结点</strong>(Initial Node)，把没有后继的结点称为<strong>终止结点</strong>(Final Node)。</p>
+<p>&emsp;&emsp;每个结点还具有一个重量(Weight)，用于表示该结点所含有的程序量或结点的执行时间。</p>
+<p>$$I_i\rightarrow C_i \rightarrow P_i 和 S_1\rightarrow S_2 \rightarrow S_3$$</p>
+<div style="width:70%;margin:auto">
+<img src="/2020/04/14/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86-%E6%9B%B4%E6%96%B0%E4%B8%AD/2.png" class="" title="前趋图">
+</div>
+
 
 
       
@@ -343,7 +359,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-进程的基本概念"><span class="toc-text">1. 进程的基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-程序的顺序执行及其特征"><span class="toc-text">1.1. 程序的顺序执行及其特征</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-1-程序的顺序执行"><span class="toc-text">1.1.1 程序的顺序执行</span></a></li></ol></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-进程的基本概念"><span class="toc-text">1. 进程的基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-程序的顺序执行及其特征"><span class="toc-text">1.1. 程序的顺序执行及其特征</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-1。-程序的顺序执行"><span class="toc-text">1.1.1。 程序的顺序执行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-2-前趋图"><span class="toc-text">1.1.2. 前趋图</span></a></li></ol></li></ol></li></ol>
         
     </div>
     <style>
