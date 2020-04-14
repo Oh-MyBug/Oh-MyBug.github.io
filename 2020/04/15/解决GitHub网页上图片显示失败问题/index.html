@@ -298,10 +298,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="1-问题"><a href="#1-问题" class="headerlink" title="1. 问题"></a>1. 问题</h3><p>GitHub网页上项目中图片加载不出来，并且Console控制台报错</p>
-<blockquote>
-<p>Failed to load resource: net::ERR_CERT_COMMON_NAME_INVALID</p>
-</blockquote>
+        <h3 id="1-问题"><a href="#1-问题" class="headerlink" title="1. 问题"></a>1. 问题</h3><p>GitHub网页上项目中图片加载不出来，并且Console控制台报错<br><code>Failed to load resource: net::ERR_CERT_COMMON_NAME_INVALID</code></p>
 <div style="width:70%;margin:auto">
 <img src="/2020/04/15/%E8%A7%A3%E5%86%B3GitHub%E7%BD%91%E9%A1%B5%E4%B8%8A%E5%9B%BE%E7%89%87%E6%98%BE%E7%A4%BA%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/1.png" class="" title="报错">
 </div>
@@ -314,9 +311,9 @@
 </ul>
 <h3 id="2-解决方法"><a href="#2-解决方法" class="headerlink" title="2. 解决方法"></a>2. 解决方法</h3><p>主要思路就是使用本地hosts文件对网站进行域名解析，一般的DNS问题都可以通过修改hosts文件来解决，github的CDN域名被污染问题也不例外，同样可以通过修改hosts文件解决，将域名解析直接指向IP地址来绕过DNS的解析，以此解决污染问题。</p>
 <h4 id="2-1-找到URL"><a href="#2-1-找到URL" class="headerlink" title="2.1. 找到URL"></a>2.1. 找到URL</h4><p>打开github任意未显示图片的网页，使用元素选择器（Ctrl+Shift+C）放在显示不了的图片上，或者在无法显示的图片上右键-检查元素，定位到该图片的标签，那么你得到了它的URL，叫做src属性。</p>
-<p>在右面把它的网址复制出来：<br><a href="https://avatars2.githubusercontent.com/u/15832957?s=60&amp;v=4" target="_blank" rel="noopener">https://avatars2.githubusercontent.com/u/15832957?s=60&amp;v=4</a></p>
+<p>在右面把它的网址复制出来：<br><code>https://avatars2.githubusercontent.com/u/15832957?s=60&amp;v=4</code></p>
 <h4 id="2-2-获取IP地址"><a href="#2-2-获取IP地址" class="headerlink" title="2.2. 获取IP地址"></a>2.2. 获取IP地址</h4><p>得到上述网址以后打开IPAddress.com这个网站，在搜索框输入它的域名，就是https://到com那一部分，俗称二级域名：</p>
-<p>avatars2.githubusercontent.com</p>
+<p><code>avatars2.githubusercontent.com</code></p>
 <div style="width:70%;margin:auto">
 <img src="/2020/04/15/%E8%A7%A3%E5%86%B3GitHub%E7%BD%91%E9%A1%B5%E4%B8%8A%E5%9B%BE%E7%89%87%E6%98%BE%E7%A4%BA%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/2.jpg" class="">
 </div>
@@ -327,7 +324,7 @@
 </div>
 
 <p>可以看出IP是：199.232.68.133，并且是2020.04.13最后更新的，那么我们就可以使这个IP和域名映射起来。</p>
-<h4 id="2-3-修改hosts"><a href="#2-3-修改hosts" class="headerlink" title="2.3. 修改hosts"></a>2.3. 修改hosts</h4><p>具体咋映射呢？修改hosts文件！！！本人使用的是windows系统，所以使用Notepad++打开：C:\Windows\System32\drivers\etc\hosts</p>
+<h4 id="2-3-修改hosts"><a href="#2-3-修改hosts" class="headerlink" title="2.3. 修改hosts"></a>2.3. 修改hosts</h4><p>具体咋映射呢？修改hosts文件！！！本人使用的是windows系统，所以使用Notepad++打开：<code>C:\Windows\System32\drivers\etc\hosts</code></p>
 <p>在文件末尾添加：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"># GitHub Start </span><br><span class="line">140.82.113.3      github.com</span><br><span class="line">140.82.114.20     gist.github.com</span><br><span class="line"></span><br><span class="line">151.101.184.133    assets-cdn.github.com</span><br><span class="line">151.101.184.133    raw.githubusercontent.com</span><br><span class="line">151.101.184.133    gist.githubusercontent.com</span><br><span class="line">151.101.184.133    cloud.githubusercontent.com</span><br><span class="line">151.101.184.133    camo.githubusercontent.com</span><br><span class="line">151.101.184.133    avatars0.githubusercontent.com</span><br><span class="line">199.232.68.133     avatars0.githubusercontent.com</span><br><span class="line">199.232.28.133     avatars1.githubusercontent.com</span><br><span class="line">151.101.184.133    avatars1.githubusercontent.com</span><br><span class="line">151.101.184.133    avatars2.githubusercontent.com</span><br><span class="line">199.232.28.133     avatars2.githubusercontent.com</span><br><span class="line">151.101.184.133    avatars3.githubusercontent.com</span><br><span class="line">199.232.68.133     avatars3.githubusercontent.com</span><br><span class="line">151.101.184.133    avatars4.githubusercontent.com</span><br><span class="line">199.232.68.133     avatars4.githubusercontent.com</span><br><span class="line">151.101.184.133    avatars5.githubusercontent.com</span><br><span class="line">199.232.68.133     avatars5.githubusercontent.com</span><br><span class="line">151.101.184.133    avatars6.githubusercontent.com</span><br><span class="line">199.232.68.133     avatars6.githubusercontent.com</span><br><span class="line">151.101.184.133    avatars7.githubusercontent.com</span><br><span class="line">199.232.68.133     avatars7.githubusercontent.com</span><br><span class="line">151.101.184.133    avatars8.githubusercontent.com</span><br><span class="line">199.232.68.133     avatars8.githubusercontent.com</span><br><span class="line"></span><br><span class="line"># GitHub End</span><br></pre></td></tr></table></figure>
 
