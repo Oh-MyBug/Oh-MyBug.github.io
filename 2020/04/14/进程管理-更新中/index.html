@@ -26,6 +26,7 @@
 <meta property="og:image" content="https://oh-mybug.github.io/2020/04/14/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86-%E6%9B%B4%E6%96%B0%E4%B8%AD/3.png">
 <meta property="og:image" content="https://oh-mybug.github.io/2020/04/14/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86-%E6%9B%B4%E6%96%B0%E4%B8%AD/4.png">
 <meta property="og:image" content="https://oh-mybug.github.io/2020/04/14/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86-%E6%9B%B4%E6%96%B0%E4%B8%AD/5.png">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/04/14/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86-%E6%9B%B4%E6%96%B0%E4%B8%AD/5.png">
 <meta property="article:published_time" content="2020-04-14T04:15:14.000Z">
 <meta property="article:modified_time" content="2020-04-14T04:15:14.000Z">
 <meta property="article:author" content="Oh_MyBug">
@@ -372,6 +373,28 @@
 <img src="/2020/04/14/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86-%E6%9B%B4%E6%96%B0%E4%B8%AD/5.png" class="" title="进程的三种基本状态及其转换">
 </div>
 
+<p>进程状态的转换：<br>三个基本状态之间可能转换和转换原因如下：</p>
+<ul>
+<li><strong>就绪态$\rightarrow$运行态</strong>：当处理机空闲时，进程调度程序必将处理机分配给一个处于就绪态的进程，改进成便由就绪态转换为运行态</li>
+<li><strong>运行态$\rightarrow$阻塞态</strong>：处于运行态的进程在运行过程中需要等待某一事件发生后（例如因I/O请求等待I/O完成后），才能继续运行，则该进程放弃处理机，从运行态转换为阻塞态</li>
+<li><strong>阻塞态$\rightarrow$就绪态</strong>：处于阻塞态的进程, 若其等待的事件已经发生, 于是进程由阻塞态转换为就绪态</li>
+<li><strong>运行态$\rightarrow$就绪态</strong>: 处于运行状态的进程在其运行过程中,因分给它的处理机事件片已用完, 而不得不让出(被抢占)处理机,于是进程由运行态转换为就绪态</li>
+<li>阻塞态$\rightarrow$运行态 和 就绪态$\rightarrow$阻塞态这两种状态转换不可能发生</li>
+</ul>
+<p>系统中各进程状态管理:</p>
+<ul>
+<li>处于运行态进程: 如系统有一个处理机, 则在任一时刻, 最多只有一个进程处于运行态</li>
+<li>处于就绪态进程: 一般处于就绪态的进程按照一定的算法(如先来的进程排在前面, 或采用优先权高的进程排在前面)排成一个就绪队列$RL$</li>
+<li>处于阻塞态进程: 处于阻塞态的进程排在阻塞队列中。由于等待事件原因不同，阻塞队列也按事件分成几个队列$WL_i$</li>
+</ul>
+<div style="width:70%;margin:auto">
+<img src="/2020/04/14/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86-%E6%9B%B4%E6%96%B0%E4%B8%AD/5.png" class="" title="进程队列">
+</div>
+
+<ul>
+<li>就绪队列无优先级（例：FIFO）</li>
+<li>当事件n发生，对应队列移进就绪队列</li>
+</ul>
 
       
     </div>
