@@ -332,15 +332,16 @@
 <img src="/2020/04/16/Anaconda%E5%AE%89%E8%A3%85%E4%B8%8E%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%88%9B%E5%BB%BA/9.png" class="" title="Anaconda Prompt">
 </div>
 
-<p>一般如果要下载包(Tensorflow、pytorch、keras等)都可以在这里conda命令下载</p>
+<p>一般如果要下载包(Tensorflow、pytorch、keras等)都可以在这里conda命令或pip命令下载</p>
 <blockquote>
 <p><strong>conda常用的命令</strong>：<br>conda list 查看安装了哪些包。<br>conda env list 或 conda info -e 查看当前存在哪些虚拟环境<br>conda update conda 检查更新当前conda</p>
 </blockquote>
 <h2 id="2-创建虚拟环境"><a href="#2-创建虚拟环境" class="headerlink" title="2 创建虚拟环境"></a>2 创建虚拟环境</h2><h3 id="2-1-虚拟环境的作用"><a href="#2-1-虚拟环境的作用" class="headerlink" title="2.1 虚拟环境的作用"></a>2.1 虚拟环境的作用</h3><p>&emsp;&emsp;如果在一台电脑上, 想开发多个不同的项目, 需要用到同一个包的不同版本, 如果使用上面的命令, 在同一个目录下安装或者更新, 新版本会覆盖以前的版本, 其它的项目就无法运行了. 解决方案 : 虚拟环境 作用 : 虚拟环境可以搭建独立的python运行环境, 使得单个项目的运行环境与其它项目互不影响.</p>
 <h3 id="2-2-创建虚拟环境"><a href="#2-2-创建虚拟环境" class="headerlink" title="2.2 创建虚拟环境"></a>2.2 创建虚拟环境</h3><h4 id="2-2-1-命令行输入-Anaconda-Prompt"><a href="#2-2-1-命令行输入-Anaconda-Prompt" class="headerlink" title="2.2.1 命令行输入(Anaconda Prompt)"></a>2.2.1 命令行输入(Anaconda Prompt)</h4><blockquote>
-<p>conda create -n xxx python=3.7</p>
+<p>conda create -n xxx python=3.5</p>
 </blockquote>
 <p>xxx为自己命名的虚拟环境名称，该文件可在Anaconda安装目录 envs文件下找到</p>
+<p><strong>PS</strong>：之前有安装过python 3.7的版本，安装后发现不能使用pip（应该是创建虚拟环境的时候没有顺带安装），但是安装python3.5的虚拟环境的时候，由顺带安装pip，也就是说python = 3.5的时候是可以使用pip命令的。（只是我遇到的情况，不知道是不是机子的问题）</p>
 <table>
 <thead>
 <tr>
@@ -358,10 +359,11 @@
 </div>
 
 <h4 id="2-2-3-在虚拟环境中安装额外的包"><a href="#2-2-3-在虚拟环境中安装额外的包" class="headerlink" title="2.2.3  在虚拟环境中安装额外的包"></a>2.2.3  在虚拟环境中安装额外的包</h4><p><strong>这里以安装tensorflow为例</strong>：</p>
-<p>激活tensorflow环境后，输入命令（这里我安装的是tensorflow1.5版本）：</p>
+<p>激活tensorflow环境后，输入命令（这里我安装的是tensorflow1.5版本）：<br>（个人习惯上用pip命令了，其实conda和pip安装没有太大的区别）</p>
 <blockquote>
-<p>conda install tensorflow==1.5</p>
+<p>pip install tensorflow==1.5 -i <a href="https://pypi.tuna.tsinghua.edu.cn/simple" target="_blank" rel="noopener">https://pypi.tuna.tsinghua.edu.cn/simple</a></p>
 </blockquote>
+<p>之前有安装过比较高版本的tensorflow(好像是1.8)，后来发现使用时和keras包不兼容，网上搜了一下然后改成了1.5版本</p>
 <h4 id="2-2-4-关闭虚拟环境"><a href="#2-2-4-关闭虚拟环境" class="headerlink" title="2.2.4 关闭虚拟环境"></a>2.2.4 关闭虚拟环境</h4><blockquote>
 <p>Linux: source deactivate<br>Windows: deactivate</p>
 </blockquote>
