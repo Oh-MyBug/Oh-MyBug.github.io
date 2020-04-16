@@ -200,7 +200,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Operating-System/" rel="tag">Operating System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Process/" rel="tag">Process</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Yelee/" rel="tag">Yelee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%95%9C%EA%B5%AD%EC%96%B4/" rel="tag">한국어</a></li></ul>
+                        <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Anaconda/" rel="tag">Anaconda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Operating-System/" rel="tag">Operating System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Process/" rel="tag">Process</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Yelee/" rel="tag">Yelee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%95%9C%EA%B5%AD%EC%96%B4/" rel="tag">한국어</a></li></ul>
                     </div>
                 </section>
                 
@@ -593,7 +593,9 @@
 <h4 id="3-2-3-AND型信号量"><a href="#3-2-3-AND型信号量" class="headerlink" title="3.2.3. AND型信号量"></a>3.2.3. AND型信号量</h4><p>在两个进程中都要包含两个对Dmutex和Emutex的操作，即</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">process</span> A:              <span class="built_in">process</span> B:</span><br><span class="line">wait(Dmutex)            wait(Emutex)</span><br><span class="line">wait(Emutex)            wait(Dmutex)</span><br></pre></td></tr></table></figure>
 <p>若进程A和B按下述次序交替执行wait操作：</p>
-<p>```C<br>process A: wait(Dmutex);    // 于是Dmutex = 0</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">process</span> A: wait(Dmutex);    <span class="comment">// 于是Dmutex = 0</span></span><br><span class="line"><span class="built_in">process</span> B: wait(Emutex);    <span class="comment">// 于是Emutex = 0</span></span><br><span class="line"><span class="built_in">process</span> A: wait(Emutex);    <span class="comment">// 于是Emutex = -1 A阻塞</span></span><br><span class="line"><span class="built_in">process</span> B: wait(Dmutex);    <span class="comment">// 于是Dmutex = -1 B阻塞</span></span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;AND同步机制的基本思想是：将进程在整个运行过程中需要的所有资源，一次性全部地分配给进程，待进程使用完后再一起释放。只要尚有一个资源未能分配给进程，其他所有可能为之分配的资源，也不分配给他。亦即，对若干个临界资源的分配，采取原子操作方式：要么全部分配到进程，要么一个也不分配。由死锁理论可知，这样就可避免上述死锁情况的发生。为此，在wait操作中，增加了一个“AND”条件，故称为AND同步，或称为同时wait操作，即Swait（Simultaneous wait）定义如下：</p>
 
       
     </div>
@@ -728,7 +730,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/04/15/%E8%A7%A3%E5%86%B3GitHub%E7%BD%91%E9%A1%B5%E4%B8%8A%E5%9B%BE%E7%89%87%E6%98%BE%E7%A4%BA%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/">解决GitHub网页上图片显示失败问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/14/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86-%E6%9B%B4%E6%96%B0%E4%B8%AD/">进程管理[更新中...]</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/13/%EC%9D%B4%EC%9C%A0/">이유</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/11/Hexo%E4%B8%BB%E9%A2%98%E2%80%94%E2%80%94Yelee%E7%9A%84%E4%BD%BF%E7%94%A8-%E6%9B%B4%E6%96%B0%E4%B8%AD/">Hexo主题——Yelee的使用[更新中...]</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/09/Hexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">Hexo个人博客搭建</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/04/16/Anaconda%E5%AE%89%E8%A3%85%E4%B8%8E%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%88%9B%E5%BB%BA/">Anaconda安装与虚拟环境创建</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/15/%E8%A7%A3%E5%86%B3GitHub%E7%BD%91%E9%A1%B5%E4%B8%8A%E5%9B%BE%E7%89%87%E6%98%BE%E7%A4%BA%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/">解决GitHub网页上图片显示失败问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/14/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86-%E6%9B%B4%E6%96%B0%E4%B8%AD/">进程管理[更新中...]</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/13/%EC%9D%B4%EC%9C%A0/">이유</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/11/Hexo%E4%B8%BB%E9%A2%98%E2%80%94%E2%80%94Yelee%E7%9A%84%E4%BD%BF%E7%94%A8-%E6%9B%B4%E6%96%B0%E4%B8%AD/">Hexo主题——Yelee的使用[更新中...]</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/09/Hexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">Hexo个人博客搭建</a></li></ul>
 
 
 
