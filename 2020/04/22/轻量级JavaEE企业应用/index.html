@@ -325,7 +325,7 @@
 <img src="/2020/04/22/%E8%BD%BB%E9%87%8F%E7%BA%A7JavaEE%E4%BC%81%E4%B8%9A%E5%BA%94%E7%94%A8/3.png" class="" title="Tomcat安装成功界面">
 </div>
 
-<p>&emsp;&emsp;Tomcat安装成功后，必须对其进行简单的配置，这些配置包括Tomcat的端口、控制台等。虽然Tomcat是一个免费的Web服务器，但也提供了图形界面控制台，通过控制台，用户可以方便地部署Web应用、监控Web应用的状态等。但对于一个开发者而言，通常建议通过修改配置文件来管理Tomcat配置，而不是通过图形界面。</p>
+<p>&emsp;&emsp;Tomcat安装成功后，必须对其进行简单的配置，这些配置包括Tomcat的端口、控制台等。虽然Tomcat是一个免费的Web服务器，但也提供了图形界面控制台，通过控制台，用户可以方便的部署Web应用、监控Web应用的状态等。但对于一个开发者而言，通常建议通过修改配置文件来管理Tomcat配置，而不是通过图形界面。</p>
 <h3 id="2-配置Tomcat的服务器"><a href="#2-配置Tomcat的服务器" class="headerlink" title="2 配置Tomcat的服务器"></a>2 配置Tomcat的服务器</h3><p>&emsp;&emsp;Tomcat的默认服务端口是8080，可以通过管理Tomcat配置文件来改变该服务端口，甚至可以通过修改配置文件让Tomcat同时在多个端口提供服务。</p>
 <p>&emsp;&emsp;Tomcat的配置文件都放在conf目录下，控制端口的配置文件也放在该路径下。打开conf下的server.xml文件，务必使用记事本或vi等无格式的编辑器，不要使用如写字板等有格式的编辑器。定位server.xml文件的68行处，看到如下代码：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Connector</span> <span class="attr">port</span>=<span class="string">"8080"</span> <span class="attr">protocol</span>=<span class="string">"HTTP/1.1"</span></span></span><br><span class="line"><span class="tag">               <span class="attr">connectionTimeout</span>=<span class="string">"20000"</span></span></span><br><span class="line"><span class="tag">               <span class="attr">redirectPort</span>=<span class="string">"8443"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
@@ -333,7 +333,7 @@
 <p>&emsp;&emsp;其中，port=”8080”就是Tomcat提供Web服务的端口，将8080修改成任意的端口，建议使用1024以上的端口，避免与公用端口冲突。此处修改位8888，即Tomcat的Web服务的提供端口为8888.</p>
 <p>&emsp;&emsp;修改成功后，重新启动Tomcat后，在浏览器地址栏输入<code>http://localhost:8888</code>，回车，将再次看到Tomcat安装成功时的页面，即显示Tomcat端口修改成功</p>
 <p><strong>提示</strong>：如果需要让Tomcat运行多个服务，只需要复制server.xml文件中的<code>&lt;Service&gt;</code>元素，并修改相应的参数，便可以实现一个Tomcat运行多个服务，当然必须在不同的端口提供服务</p>
-<p>&emsp;&emsp;在Web应用的开发阶段，通常希望Tomcat能列出Web应用根路径下的所有页面，这样能更方便地选择需要调试地JSP页面。在默认情况下，处于安全考虑，Tomcat并不会列出Web应用根路径下的所有页面，为了让Tomcat列出Web应用根路径下地所有页面，可以打开Tomcat地conf目录下的web.xml文件，在该文件地121、122两行，看到一个<code>listings</code>参数，该参数地值默认是false，将该参数改为true，即可让Tomcat列出Web应用根路径下地所有页面，即：</p>
+<p>&emsp;&emsp;在Web应用的开发阶段，通常希望Tomcat能列出Web应用根路径下的所有页面，这样能更方便地选择需要调试的JSP页面。在默认情况下，处于安全考虑，Tomcat并不会列出Web应用根路径下的所有页面，为了让Tomcat列出Web应用根路径下的所有页面，可以打开Tomcat的conf目录下的web.xml文件，在该文件的121、122两行，看到一个<code>listings</code>参数，该参数的值默认是false，将该参数改为true，即可让Tomcat列出Web应用根路径下的所有页面，即：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>listings<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>true<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="3-进入控制台"><a href="#3-进入控制台" class="headerlink" title="3 进入控制台"></a>3 进入控制台</h3><div style="width:70%;margin:auto">
@@ -368,14 +368,14 @@
 
 <p>&emsp;&emsp;在如上图所示的控制台可监控到所有部署在该服务器下的Web应用，左边列出了所有部署在该Web容器内的Web应用，右边的4个按钮则用于控制，包括启动、停止、重启等。</p>
 <p>&emsp;&emsp;控制台下方的Deploy区则用于部署Web应用。Tomcat控制台提供两种方式部署Web应用：一种是将整个路径部署成Web应用；另一种是将WAR文件部署成Web应用（在上图中看不到这种方式，在Deploy区下面，还有一个WAR file to deploy区，用于部署WAR文件）</p>
-<h3 id="4-部署Web应用"><a href="#4-部署Web应用" class="headerlink" title="4 部署Web应用"></a>4 部署Web应用</h3><p>在Tomcat中部署Web应用得方式主要有如下几种</p>
+<h3 id="4-部署Web应用"><a href="#4-部署Web应用" class="headerlink" title="4 部署Web应用"></a>4 部署Web应用</h3><p>在Tomcat中部署Web应用的方式主要有如下几种</p>
 <ul>
-<li>利用Tomcat得自动部署</li>
+<li>利用Tomcat的自动部署</li>
 <li>利用控制台部署</li>
-<li>增加自定义得Web部署文件</li>
+<li>增加自定义的Web部署文件</li>
 <li>利用server.xml文件部署Web应用</li>
 </ul>
-<p>&emsp;&emsp;利用Tomcat得自动部署方式是最简单、最常用的方式，只要将一个Web应用复制到Tomcat的webapps下，系统就会把该应用部署到Tomcat中。</p>
+<p>&emsp;&emsp;利用Tomcat的自动部署方式是最简单、最常用的方式，只要将一个Web应用复制到Tomcat的webapps下，系统就会把该应用部署到Tomcat中。</p>
 <p>&emsp;&emsp;利用控制台部署Web应用也很简单，只要在部署Web应用的控制台按如下图所示方式输入即可。</p>
 <div style="width:70%;margin:auto">
 <img src="/2020/04/22/%E8%BD%BB%E9%87%8F%E7%BA%A7JavaEE%E4%BC%81%E4%B8%9A%E5%BA%94%E7%94%A8/6.png" class="" title="利用控制台部署Web应用">
@@ -389,7 +389,7 @@
 <p><code>http://&lt;server_address&gt;:&lt;port&gt;/dd</code></p>
 <p>&emsp;&emsp;其中URL中的dd就是Web部署文件的主名。</p>
 <p>&emsp;&emsp;最后还有一种方式是修改server.xml文件，这种方式需要修改conf目录下的server.xml文件，修改该文件可能破坏Tomcat的系统文件，因此不建议采用。</p>
-<h3 id="5-配置Tomcat的数据源"><a href="#5-配置Tomcat的数据源" class="headerlink" title="5 配置Tomcat的数据源"></a>5 配置Tomcat的数据源</h3><p>&emsp;&emsp;从Tomcat 5.5开始，Tomcat内置了DBCP的数据源实现，所以可以非常方便地配置DBCP数据源。Tomcat提供了两种配置数据源地方式，这两种方式所配置的数据源的访问范围不同：一种数据源可以让所有地Web应用都访问，被称为全局数据源；另一种只能在单个的Web应用中访问，被称为局部数据源。不管配置那种数据源，都需要提供特定数据库地JDBC驱动。下面将以MySQL为例配置数据源，所以必须先将MySQL地JDBC驱动程序复制到Tomcat地lib路径下。</p>
+<h3 id="5-配置Tomcat的数据源"><a href="#5-配置Tomcat的数据源" class="headerlink" title="5 配置Tomcat的数据源"></a>5 配置Tomcat的数据源</h3><p>&emsp;&emsp;从Tomcat 5.5开始，Tomcat内置了DBCP的数据源实现，所以可以非常方便的配置DBCP数据源。Tomcat提供了两种配置数据源的方式，这两种方式所配置的数据源的访问范围不同：一种数据源可以让所有的Web应用都访问，被称为全局数据源；另一种只能在单个的Web应用中访问，被称为局部数据源。不管配置那种数据源，都需要提供特定数据库的JDBC驱动。下面将以MySQL为例配置数据源，所以必须先将MySQL的JDBC驱动程序复制到Tomcat的lib路径下。</p>
 <p><strong>注意</strong>：MySQL数据库驱动可以到MySQL官方站点下载。</p>
 <p>&emsp;&emsp;局部数据源无需修改系统的配置文件，只需修改用户自己的Web部署文件，不会造成系统的混乱，而且数据源被封装在一个Web应用之内，防止被其他的Web应用访问，提供了更好的封装性。</p>
 <p>&emsp;&emsp;局部数据源只与特定的Web应用相关，因此在该Web应用对应的部署文件中配置。例如，为上面的Web应用增加局部数据源，修改Tomcat下conf/Catalina/localhost下的dd.xml文件即可。为Context元素增加一个Resource子元素，增加局部数据源后的dd.xml文件内容如下：</p>
@@ -400,10 +400,11 @@
 <p>&emsp;&emsp;再次启动Tomcat，该Web应用即可通过JNDI名字来访问数据源。下面是测试访问数据源的JSP页面代码片段：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 初始化Cotntext，使用InitialContext初始化Context</span></span><br><span class="line">Context ctx = <span class="keyword">new</span> InitialContext();</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">通过JNDI查询数据源，该JNDI为java:comp/env/jdbc/dstest，分为两个部分</span></span><br><span class="line"><span class="comment">java:comp/env是Tomcat固定的，Tomcat提供的JNDI绑定都必须加该前缀 </span></span><br><span class="line"><span class="comment">jdbc/dstest是定义数据源时的数据源名</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">DataSource ds = (DataSource)ctx.lookup(<span class="string">"java:comp/env/jdbc/dstest"</span>);</span><br><span class="line"><span class="comment">// 获取数据库连接</span></span><br><span class="line">Connection conn = ds.getConnection();</span><br><span class="line"><span class="comment">// 获取Statement</span></span><br><span class="line">Statement stmt = conn.creatStatement();</span><br><span class="line"><span class="comment">// 执行查询，返回ResultSet对象</span></span><br><span class="line">ResultSet rs = stmt.executeQuery(<span class="string">"select * from news_inf"</span>);</span><br><span class="line"><span class="keyword">while</span>(rs.next())&#123;</span><br><span class="line">    out.println(rs.getString(<span class="number">1</span>)</span><br><span class="line">        + <span class="string">"\t"</span> + rs.getString(<span class="number">2</span>) + <span class="string">"&lt;br/&gt;"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>&emsp;&emsp;上面的<code>DataSource ds = (DataSource)ctx.lookup(&quot;java:comp/env/jdbc/dstest&quot;);</code>实现了JNDI查找数据源对象，一旦获取了数据源对象，程序就可以通过该数据源取得数据库连接，从而访问数据库。</p>
+<p>&emsp;&emsp;上面的<code>DataSource ds = (DataSource)ctx.lookup(&quot;java:comp/env/jdbc/dstest&quot;);</code>实现了JNDI查找数据源对象，一旦获取了数据源对象，程序就可以通过该数据源取的数据库连接，从而访问数据库。</p>
 <p>&emsp;&emsp;上面的方式是配置局部数据源，如果需要配置全局数据源，则应通过修改server.xml文件来实现，全局数据源的配置与局部数据源的配置基本类似，只是修改的文件不同。局部数据源只需修改Web应用的配置文件，而全局数据源需要修改Tomcat的sercer.xml文件</p>
 <p>&emsp;&emsp;上面的代码需要在本机安装MySQL数据库，并提供一个名为javaee的数据库，该数据库下必须有一个名为news_inf的数据表</p>
 <p><strong>注意</strong>：使用全局数据源需要修改Tomcat原有的server.xml文件，所以可能导致破坏Tomcat系统，因而尽量避免使用全局数据源。</p>
+<p><strong>参考资料</strong>：《轻量级JavaEE企业应用实战》</p>
 
       
     </div>
