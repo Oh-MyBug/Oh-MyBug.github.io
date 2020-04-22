@@ -15,12 +15,12 @@
 
 
 
-<meta name="description" content="Tomcat的下载和安装安装Tomcat服务器&amp;emsp;&amp;emsp;Tomcat完全是纯Java实现，与平台无关，在任何平台上运行完全相同。在Windows和Linux平台上的安装和配置基本相同。这里以Windows平台为示范，介绍Tomcat的下载和安装。 Step 1: 登录Tomcat官网站点，下载Tomcat合适的版本(因为我需要使用Servlet3.1规范，因此必须使用Tomcat 8">
+<meta name="description" content="轻量级JavaEE企业应用实战...">
 <meta property="og:type" content="article">
 <meta property="og:title" content="轻量级JavaEE企业应用">
 <meta property="og:url" content="https://oh-mybug.github.io/2020/04/22/%E8%BD%BB%E9%87%8F%E7%BA%A7JavaEE%E4%BC%81%E4%B8%9A%E5%BA%94%E7%94%A8/index.html">
 <meta property="og:site_name" content="Oh_MyBug">
-<meta property="og:description" content="Tomcat的下载和安装安装Tomcat服务器&amp;emsp;&amp;emsp;Tomcat完全是纯Java实现，与平台无关，在任何平台上运行完全相同。在Windows和Linux平台上的安装和配置基本相同。这里以Windows平台为示范，介绍Tomcat的下载和安装。 Step 1: 登录Tomcat官网站点，下载Tomcat合适的版本(因为我需要使用Servlet3.1规范，因此必须使用Tomcat 8">
+<meta property="og:description" content="轻量级JavaEE企业应用实战...">
 <meta property="og:image" content="https://oh-mybug.github.io/2020/04/22/%E8%BD%BB%E9%87%8F%E7%BA%A7JavaEE%E4%BC%81%E4%B8%9A%E5%BA%94%E7%94%A8/1.png">
 <meta property="og:image" content="https://oh-mybug.github.io/2020/04/22/%E8%BD%BB%E9%87%8F%E7%BA%A7JavaEE%E4%BC%81%E4%B8%9A%E5%BA%94%E7%94%A8/2.png">
 <meta property="og:image" content="https://oh-mybug.github.io/2020/04/22/%E8%BD%BB%E9%87%8F%E7%BA%A7JavaEE%E4%BC%81%E4%B8%9A%E5%BA%94%E7%94%A8/3.png">
@@ -331,6 +331,8 @@
 <p><strong>提示</strong>：如果需要让Tomcat运行多个服务，只需要复制server.xml文件中的<code>&lt;Service&gt;</code>元素，并修改相应的参数，便可以实现一个Tomcat运行多个服务，当然必须在不同的端口提供服务</p>
 <p>&emsp;&emsp;在Web应用的开发阶段，通常希望Tomcat能列出Web应用根路径下的所有页面，这样能更方便地选择需要调试地JSP页面。在默认情况下，处于安全考虑，Tomcat并不会列出Web应用根路径下的所有页面，为了让Tomcat列出Web应用根路径下地所有页面，可以打开Tomcat地conf目录下的web.xml文件，在该文件地121、122两行，看到一个<code>listings</code>参数，该参数地值默认是false，将该参数改为true，即可让Tomcat列出Web应用根路径下地所有页面，即：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>listings<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>true<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
       
     </div>
     
