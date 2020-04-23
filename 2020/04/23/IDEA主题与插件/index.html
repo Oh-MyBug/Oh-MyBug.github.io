@@ -30,6 +30,10 @@
 <meta property="og:image" content="https://oh-mybug.github.io/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/7.jpg">
 <meta property="og:image" content="https://oh-mybug.github.io/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/8.jpg">
 <meta property="og:image" content="https://oh-mybug.github.io/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/9.jpg">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/10.jpg">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/11.jpg">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/12.jpg">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/13.jpg">
 <meta property="article:published_time" content="2020-04-23T03:42:46.000Z">
 <meta property="article:modified_time" content="2020-04-23T03:42:46.000Z">
 <meta property="article:author" content="Oh_MyBug">
@@ -355,7 +359,34 @@
 <p>以Class文件举例说明，选择Class然后对内容进行修改，下次新建一个.Java文件时编译器会自动生成以下内容的代码。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#if ($&#123;PACKAGE_NAME&#125; &amp;&amp; $&#123;PACKAGE_NAME&#125; != "")package $&#123;PACKAGE_NAME&#125;;#end</span><br><span class="line">#parse("File Header.java")</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ClassName: $&#123;NAME&#125;</span></span><br><span class="line"><span class="comment"> * Date:      $&#123;DATE&#125; $&#123;TIME&#125;</span></span><br><span class="line"><span class="comment"> * author:    Oh_MyBug</span></span><br><span class="line"><span class="comment"> * version:   V1.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> $</span>&#123;NAME&#125; &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="优秀插件"><a href="#优秀插件" class="headerlink" title="优秀插件"></a>优秀插件</h3>
+<h3 id="优秀插件"><a href="#优秀插件" class="headerlink" title="优秀插件"></a>优秀插件</h3><p>以下插件下载方法：File &gt; Settings &gt; Plugins &gt; Browse repositories… &gt; Search for “GsonFormat” &gt; Install Plugin，然后重启IDEA</p>
+<h4 id="CodeGlance"><a href="#CodeGlance" class="headerlink" title="CodeGlance"></a>CodeGlance</h4><p>CodeGlance是一款非常好用的代码地图插件，可以在代码编辑区的右侧生成一个竖向可拖动的代码缩略区，可以快速定位代码的同时，并且提供放大镜功能</p>
+<p>右侧代码缩略图效果：</p>
+<div style="width:70%;margin:auto">
+<img src="/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/10.jpg" class="">
+</div>
+
+<p>放大镜效果：</p>
+<div style="width:70%;margin:auto">
+<img src="/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/11.jpg" class="">
+</div>
+
+
+<h4 id="Translation"><a href="#Translation" class="headerlink" title="Translation"></a>Translation</h4><p>代码中经常遇到不认识的英文单词或者句子，很蒙蔽怎么办？</p>
+<p>Translation是一款非常好用的翻译插件，可以随时随地翻译单词、甚至一段话，从此不再需要额外打开浏览器搜索翻译网站了！</p>
+<p>我用的是有道翻译，在<a href="https://ai.youdao.com/" target="_blank" rel="noopener">官网</a>获取应用ID和密钥即可使用，有了这个插件，妈妈再也不用担心我看源码一头雾水了。</p>
+<p>翻译整段话：</p>
+<div style="width:70%;margin:auto">
+<img src="/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/12.jpg" class="">
+</div>
+
+<p>翻译逐个单词：</p>
+<div style="width:70%;margin:auto">
+<img src="/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/13.jpg" class="">
+</div>
+
+
+<h4 id="Rainbow-Brackets"><a href="#Rainbow-Brackets" class="headerlink" title="Rainbow Brackets"></a>Rainbow Brackets</h4>
       
     </div>
     
@@ -396,7 +427,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#设置主题、字体样式和背景色"><span class="toc-text">设置主题、字体样式和背景色</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#主题"><span class="toc-text">主题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字体样式"><span class="toc-text">字体样式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特殊格式字体颜色"><span class="toc-text">特殊格式字体颜色</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置Live-Template代码模板"><span class="toc-text">设置Live Template代码模板</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件代码模板"><span class="toc-text">文件代码模板</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优秀插件"><span class="toc-text">优秀插件</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#设置主题、字体样式和背景色"><span class="toc-text">设置主题、字体样式和背景色</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#主题"><span class="toc-text">主题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字体样式"><span class="toc-text">字体样式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特殊格式字体颜色"><span class="toc-text">特殊格式字体颜色</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置Live-Template代码模板"><span class="toc-text">设置Live Template代码模板</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件代码模板"><span class="toc-text">文件代码模板</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优秀插件"><span class="toc-text">优秀插件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#CodeGlance"><span class="toc-text">CodeGlance</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Translation"><span class="toc-text">Translation</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Rainbow-Brackets"><span class="toc-text">Rainbow Brackets</span></a></li></ol></li></ol>
         
     </div>
     <style>
