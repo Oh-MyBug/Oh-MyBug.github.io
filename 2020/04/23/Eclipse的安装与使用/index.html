@@ -357,6 +357,11 @@
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">path=<span class="tag">&lt;<span class="name">pluginPath</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>上面内容中<code>path=</code>是固定的，而<code>&lt;pluginPath&gt;</code>是插件的扩展安装路径。</p>
 <p><strong>Step 4</strong>：在xxx.link文件中的<pluginPath>路径下下新建eclipse文件夹，再在eclipse文件夹内建立plugins和features文件夹。</p>
+<p><strong>Step 5</strong>：将插件中包含的plugins和features文件夹的内容，复制到上面建立的plugins和features文件夹中，重启Eclipse即完成安装。</p>
+<p>&emsp;&emsp;扩展安装方式使得每个插件放在单独的文件夹内，因而结构非常清晰。如果需要卸载某个插件，只需将该插件对应的link文件删除即可。</p>
+<h3 id="6-使用Eclipse开发Java-EE应用"><a href="#6-使用Eclipse开发Java-EE应用" class="headerlink" title="6 使用Eclipse开发Java EE应用"></a>6 使用Eclipse开发Java EE应用</h3><p>&emsp;&emsp;下面以开发一个简单的Web应用为例，介绍通过Eclipse开发Java EE应用的通用步骤。</p>
+<p>&emsp;&emsp;为了开发Web应用，必须现在Eclipse中配置Web服务器，这里以Tomcat为例介绍如何再Eclipse中配置Web服务器。再Eclipse中配置Tomcat按如下步骤进行</p>
+<p><strong>Step 1</strong>：单击Eclipse下方的“Servers”面板，在该面板的空白处单击鼠标右键，再弹出的快捷菜单中选择“New”-&gt;”Server”菜单项，如图所示。</p>
 
       
     </div>
@@ -398,7 +403,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-前言"><span class="toc-text">1 前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Eclipse的下载和安装"><span class="toc-text">2 Eclipse的下载和安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-在线安装Eclipse插件"><span class="toc-text">3 在线安装Eclipse插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-从本地压缩包安装插件"><span class="toc-text">4 从本地压缩包安装插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-手动安装Eclipse插件"><span class="toc-text">5 手动安装Eclipse插件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-直接安装"><span class="toc-text">5.1 直接安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-扩展安装"><span class="toc-text">5.2 扩展安装</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-前言"><span class="toc-text">1 前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Eclipse的下载和安装"><span class="toc-text">2 Eclipse的下载和安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-在线安装Eclipse插件"><span class="toc-text">3 在线安装Eclipse插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-从本地压缩包安装插件"><span class="toc-text">4 从本地压缩包安装插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-手动安装Eclipse插件"><span class="toc-text">5 手动安装Eclipse插件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-直接安装"><span class="toc-text">5.1 直接安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-扩展安装"><span class="toc-text">5.2 扩展安装</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-使用Eclipse开发Java-EE应用"><span class="toc-text">6 使用Eclipse开发Java EE应用</span></a></li></ol>
         
     </div>
     <style>
