@@ -21,10 +21,12 @@
 <meta property="og:url" content="https://oh-mybug.github.io/2020/04/25/Ant%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/index.html">
 <meta property="og:site_name" content="Oh_MyBug">
 <meta property="og:description" content="1 前言Ant是一种基于Java的生成工具。从作用上看，它有些类似于C编程（UNIX平台上使用较多）中的Make工具，C&#x2F;C++项目经常使用Make工具来管理整个项目的编译、生成。 Make使用Shell命令来定义生成任务，并定义任务之间的依赖关系，以便它们总是以必须的顺序来执行。 Make工具主要有如下两个缺陷。  Make工具的本质还是依赖UNIX平台的Shell语言，所以Make工具无法跨平">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/04/25/Ant%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/1.jpg">
 <meta property="article:published_time" content="2020-04-25T06:26:26.000Z">
 <meta property="article:modified_time" content="2020-04-25T06:26:26.000Z">
 <meta property="article:author" content="Oh_MyBug">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://oh-mybug.github.io/2020/04/25/Ant%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/1.jpg">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -321,7 +323,7 @@
 <p>经过上面4个步骤，Ant安装成功，启动命令行窗口，输入<code>ant.bat</code>命令，则应该可以看到如下提示：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Buildfile: build.xml does not exist!</span><br><span class="line">Build failed</span><br></pre></td></tr></table></figure>
 
-<h3 id="使用Ant工具"><a href="#使用Ant工具" class="headerlink" title="使用Ant工具"></a>使用Ant工具</h3><p>使用Ant非常简单，当正确的安装Ant后， 只要输入ant或ant.bat即可。</p>
+<h3 id="3-使用Ant工具"><a href="#3-使用Ant工具" class="headerlink" title="3 使用Ant工具"></a>3 使用Ant工具</h3><p>使用Ant非常简单，当正确的安装Ant后， 只要输入ant或ant.bat即可。</p>
 <p>如果运行ant命令时没有指定任何参数，Ant会在当前目录下搜索build.xml文件。如果找到了就以该文件作为生成文件，并执行默认的target。</p>
 <p>如果运行时使用-find或者-s选项（这两个选项的作用完全相同），Ant就会到上级目录中搜索生成文件，直至到达文件系统的根路径。</p>
 <p>要想让Ant使用其他生成文件，可以用<code>-buildfile&lt;生成文件&gt;</code>选项，其中<code>-buildfile</code>可以使用<code>-file</code>或<code>-f</code>来代替，这三个选项的作用完全一样。例如如下命令：</p>
@@ -338,7 +340,16 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ant -Denvl&#x3D;%ANT_HOME%</span><br></pre></td></tr></table></figure>
 
 <p>上面命令中的代码用于向生成文件中传入一个envl属性，而该属性的值并没有直接给出，而是用%ANT_HOME%的形式给出——这是Windows下访问环境变量的方式。通过这种方式，就可以将Windows环境变量值传入生成文件了，如果希望在生成文件中访问到该环境变量的值，使用$envl即可。</p>
+<p>上面命令在Linux平台上改为：<code>ant-Denvl=$ANT_HOME</code>，Linux下以$符来访问环境变量。</p>
+<p>在默认情况下，Ant将运行生成文件里指定的默认target，如果运行ant时显示指定希望运行的target，则可采用如下命令格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ant [target1 [target2 [target3] ...]]</span><br></pre></td></tr></table></figure>
 
+<p>实际上，如果读者需要获取ant命令的更多详细情况，直接使用<code>ant -help</code>选项即可。运行<code>ant -help</code>，将看到如图所示的提示信息。</p>
+<div style="width:70%;margin:auto">
+<img src="/2020/04/25/Ant%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/1.jpg" class="" title="ant命令用法">
+</div>
+
+<h3 id="4-定义生成文件"><a href="#4-定义生成文件" class="headerlink" title="4 定义生成文件"></a>4 定义生成文件</h3>
       
     </div>
     
@@ -379,7 +390,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-前言"><span class="toc-text">1 前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Ant的下载和安装"><span class="toc-text">2 Ant的下载和安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用Ant工具"><span class="toc-text">使用Ant工具</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-前言"><span class="toc-text">1 前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Ant的下载和安装"><span class="toc-text">2 Ant的下载和安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-使用Ant工具"><span class="toc-text">3 使用Ant工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-定义生成文件"><span class="toc-text">4 定义生成文件</span></a></li></ol>
         
     </div>
     <style>
