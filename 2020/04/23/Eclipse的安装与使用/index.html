@@ -38,6 +38,10 @@
 <meta property="og:image" content="https://oh-mybug.github.io/2020/04/23/Eclipse%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/14.jpg">
 <meta property="og:image" content="https://oh-mybug.github.io/2020/04/23/Eclipse%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/15.jpg">
 <meta property="og:image" content="https://oh-mybug.github.io/2020/04/23/Eclipse%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/16.jpg">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/04/23/Eclipse%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/17.jpg">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/04/23/Eclipse%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/18.jpg">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/04/23/Eclipse%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/17.jpg">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/04/23/Eclipse%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/19.jpg">
 <meta property="article:published_time" content="2020-04-23T12:14:49.000Z">
 <meta property="article:modified_time" content="2020-04-23T12:14:49.000Z">
 <meta property="article:author" content="Oh_MyBug">
@@ -441,7 +445,46 @@
 </div>
 
 <p>&emsp;&emsp;经过上面的步骤，已经开发并部署了一个简单的Web应用但该Web应用中仅有一个简单的JSP页面。</p>
-<h3 id="7-导入Eclipse项目"><a href="#7-导入Eclipse项目" class="headerlink" title="7 导入Eclipse项目"></a>7 导入Eclipse项目</h3><p>&emsp;&emsp;很多时候，可能需要</p>
+<h3 id="7-导入Eclipse项目"><a href="#7-导入Eclipse项目" class="headerlink" title="7 导入Eclipse项目"></a>7 导入Eclipse项目</h3><p>&emsp;&emsp;很多时候，可能需要向Eclipse中导入其他项目，在实际开发中可能需要导入其他开发者提供的Eclipse项目，在学习过程中可能需要导入网络、书籍提供的示例项目。</p>
+<p>&emsp;&emsp;向Eclipse工具中导入一个Eclipse项目比较简单，只需按如下步骤进行即可。</p>
+<p><strong>Step 1</strong>：单击“<code>File -&gt; Import...</code>“菜单项，Eclipse弹出如图所示的对话框。</p>
+<div style="width:70%;margin:auto">
+<img src="/2020/04/23/Eclipse%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/17.jpg" class="" title="导入Eclipse">
+</div>
+
+<p><strong>Step 2</strong>：选择”General -&gt; Existing Projects into Workapace”节点，单击“<code>Next</code>”按钮，系统将弹出如图所示的对话框。</p>
+<div style="width:70%;margin:auto">
+<img src="/2020/04/23/Eclipse%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/18.jpg" class="" title="选择需要导入的项目">
+</div>
+
+<p><strong>Step 3</strong>：在“Select root directory”文本框内输入Eclipse项目的保存位置，也可以通过单击后面的“<code>Browse...</code>”按钮来选择Eclipse项目的保存位置，输入完成后，将看到“<code>Project</code>”文本域内列出了所有可导入的项目，勾选需要导入的项目后单击“<code>Finish</code>”按钮即可。</p>
+<h3 id="导入非Eclipse项目"><a href="#导入非Eclipse项目" class="headerlink" title="导入非Eclipse项目"></a>导入非Eclipse项目</h3><p>&emsp;&emsp;有些时候，也可能需要将一些非Eclipse项目导入Eclipse工具中，因为不能要求所有开发者都使用Eclipse。</p>
+<p>&emsp;&emsp;由于不同IDE对项目文件的组织方式存在一些差异，所以向Eclipse中导入非Eclipse项目相对复杂一点。向Eclipse中导入非Eclise项目应该采用分别导入指定文件的方式。</p>
+<p>&emsp;&emsp;向Eclipse中导入指定文件请按如下步骤进行。</p>
+<p><strong>Step 1</strong>：新建一个普通的Eclipse项目<br><strong>Step 2</strong>：单击“<code>File -&gt; Import...</code>”菜单项，Eclipse将弹出如图所示的对话框。</p>
+<div style="width:70%;margin:auto">
+<img src="/2020/04/23/Eclipse%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/17.jpg" class="" title="导入Eclipse项目">
+</div>
+
+<p><strong>Step 3</strong>：选择“<code>General -&gt; File System</code>”节点，单击“<code>Next</code>”按钮，系统将弹出如图所示的对话框。</p>
+<div style="width:70%;margin:auto">
+<img src="/2020/04/23/Eclipse%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/19.jpg" class="" title="向Eclipse中导入文件">
+</div>
+
+<p>&emsp;&emsp;在此对话框的左边有三个按钮，他们的作用分别是：</p>
+<ul>
+<li>Filter Types…：根据指定文件后缀导入文件</li>
+<li>Select All；导入指定目录下的文件</li>
+<li>Deselect All：取消全部选择</li>
+</ul>
+<p><strong>Step 4</strong>：按上图所示分别输入需要导入文件的路径，选中需要导入的文件，并输入需要导入到Eclipse项目的那个目录下，然后单击“<code>Finish</code>”按钮，即可将指定文件导入Eclipse项目中。</p>
+<p><strong>Tip</strong>：不要指望将一个非Eclipse项目整体导入Eclipse工具中。毕竟，不同IDE工具对项目文件的组织方式不同！如果需要导入非Eclipse项目，只能采用导入文件的方式依次导入。</p>
+<p>&emsp;&emsp;将其他项目导入Eclipse中还有一种方式：直接进入需要被导入的项目路径下，将相应的文件复制到Eclipse项目的相对路径下即可。</p>
+<p>&emsp;&emsp;以Eclipse的一个Web项目为例，将另一个Web项目导入Eclipse下只需如下三步：</p>
+<p><strong>Step 1</strong>：将其他的Web项目的所有Java源文件（通常位于<code>src</code>目录下）所在的路径的全部内容一起复制到Eclipse Web项目的<code>src</code>目录下</p>
+<p><strong>Step 2</strong>：将其他Web项目的JSP页面、WEB-INF整个目录一起复制到Eclipse Web项目的WebContent目录下</p>
+<p><strong>Step 3</strong>：返回Eclipse主界面，选择Eclipse左边项目导航树中指定对应的节点，按F5键即可</p>
+<p>参考资料：《轻量级Java EE企业应用实战》</p>
 
       
     </div>
@@ -483,7 +526,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-前言"><span class="toc-text">1 前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Eclipse的下载和安装"><span class="toc-text">2 Eclipse的下载和安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-在线安装Eclipse插件"><span class="toc-text">3 在线安装Eclipse插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-从本地压缩包安装插件"><span class="toc-text">4 从本地压缩包安装插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-手动安装Eclipse插件"><span class="toc-text">5 手动安装Eclipse插件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-直接安装"><span class="toc-text">5.1 直接安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-扩展安装"><span class="toc-text">5.2 扩展安装</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-使用Eclipse开发Java-EE应用"><span class="toc-text">6 使用Eclipse开发Java EE应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-导入Eclipse项目"><span class="toc-text">7 导入Eclipse项目</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-前言"><span class="toc-text">1 前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Eclipse的下载和安装"><span class="toc-text">2 Eclipse的下载和安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-在线安装Eclipse插件"><span class="toc-text">3 在线安装Eclipse插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-从本地压缩包安装插件"><span class="toc-text">4 从本地压缩包安装插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-手动安装Eclipse插件"><span class="toc-text">5 手动安装Eclipse插件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-直接安装"><span class="toc-text">5.1 直接安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-扩展安装"><span class="toc-text">5.2 扩展安装</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-使用Eclipse开发Java-EE应用"><span class="toc-text">6 使用Eclipse开发Java EE应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-导入Eclipse项目"><span class="toc-text">7 导入Eclipse项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#导入非Eclipse项目"><span class="toc-text">导入非Eclipse项目</span></a></li></ol>
         
     </div>
     <style>
