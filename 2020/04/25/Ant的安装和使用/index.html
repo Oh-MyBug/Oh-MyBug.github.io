@@ -332,6 +332,12 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ant -verbose -l a.log &#x2F;&#x2F; 运行Ant时生成更多的提示信息，并将提示信息输出到a.log文件中</span><br></pre></td></tr></table></figure>
 
 <p>除此之外，Ant还允许运行时指定一些属性来覆盖生成文件中指定的属性值（使用Property task来指定），例如使用<code>-D&lt;property&gt;=&lt;value&gt;</code>，则此处指定的value将会覆盖生成文件中property的属性值。例如如下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ant -Dbook&#x3D;Spring4  &#x2F;&#x2F; 该命令将会覆盖生成文件中的book属性值</span><br></pre></td></tr></table></figure>
+
+<p>通过该方法可以将操作系统的环境值传入生成文件，例如在运行Ant工具时使用如下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ant -Denvl&#x3D;%ANT_HOME%</span><br></pre></td></tr></table></figure>
+
+<p>上面命令中的代码用于向生成文件中传入一个envl属性，而该属性的值并没有直接给出，而是用%ANT_HOME%的形式给出——这是Windows下访问环境变量的方式。通过这种方式，就可以将Windows环境变量值传入生成文件了，如果希望在生成文件中访问到该环境变量的值，使用$envl即可。</p>
 
       
     </div>
