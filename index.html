@@ -186,7 +186,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Anaconda/" rel="tag">Anaconda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Eclipse/" rel="tag">Eclipse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaEE/" rel="tag">JavaEE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Operating-System/" rel="tag">Operating System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Process/" rel="tag">Process</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Yelee/" rel="tag">Yelee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%95%9C%EA%B5%AD%EC%96%B4/" rel="tag">한국어</a></li></ul>
+                        <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Anaconda/" rel="tag">Anaconda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant/" rel="tag">Ant</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Eclipse/" rel="tag">Eclipse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-EE/" rel="tag">Java EE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaEE/" rel="tag">JavaEE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Operating-System/" rel="tag">Operating System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Process/" rel="tag">Process</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Yelee/" rel="tag">Yelee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%ED%95%9C%EA%B5%AD%EC%96%B4/" rel="tag">한국어</a></li></ul>
                     </div>
                 </section>
                 
@@ -280,78 +280,24 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="1-前言"><a href="#1-前言" class="headerlink" title="1 前言"></a>1 前言</h3><p>Ant是一种基于Java的生成工具。从作用上看，它有些类似于C编程（UNIX平台上使用较多）中的Make工具，C/C++项目经常使用Make工具来管理整个项目的编译、生成。</p>
-<p>Make使用Shell命令来定义生成任务，并定义任务之间的依赖关系，以便它们总是以必须的顺序来执行。</p>
-<p>Make工具主要有如下两个缺陷。</p>
-<ul>
-<li>Make工具的本质还是依赖UNIX平台的Shell语言，所以Make工具无法跨平台</li>
-<li>Make工具的生成文件的格式比较严格，容易导致错误</li>
-</ul>
-<p>Ant工具是基于Java语言的生成工具，所以具有跨平台的能力：而且Ant工具使用XML文件来编写生成文件，因而具有更好的适应性。</p>
-<p>由此可见，Ant是Java世界的Make工具，而且这个工具是跨平台的，并具有简单、易用的特性。</p>
-<p>由于Ant具有跨平台的特性，所以编写Ant生成文件时可能会失去一些灵活性。为了弥补这个不足，Ant提供了一个“exec”核心任务，这个任务允许执行特定操作系统上的命令。</p>
-<h3 id="2-Ant的下载和安装"><a href="#2-Ant的下载和安装" class="headerlink" title="2 Ant的下载和安装"></a>2 Ant的下载和安装</h3><p>下载和安装Ant按如下步骤进行。</p>
-<p><strong>Step 1</strong>：登录<code>http://ant.apache.org/bindownload.cgi</code>站点下载Ant最新版。虽然Ant是基于Java的生成工具，具有平台无关的特性，但考虑到解压缩的方便性，通常建议Windows平台下载*.zip压缩包，而Linux平台则下载.gz压缩包。</p>
-<p><strong>Step 2</strong>：将下载的压缩文件解压缩到任意路径，并将Ant文件夹重命名为Ant194.解压缩后看到如下文件结构：</p>
-<ul>
-<li>bin：启动和运行Ant的可执行命令</li>
-<li>etc：包含一些样式单文件，通常无需理会该目录下的文件</li>
-<li>lib：包含Ant的核心类库，以及编译和运行Ant所依赖的第三方类库</li>
-<li>manual：Ant工具的相关文档，这些文档对学习使用Ant有很大作用</li>
-<li>LICENSE等说明性文档</li>
-</ul>
-<p><strong>提示</strong>：重命名Ant文件夹仅仅是为了方便、简捷，并不是必需的。</p>
-<p><strong>Step 3</strong>：Ant的运行需要如下两个环境变量。</p>
-<ul>
-<li>JAVA_HOME：该环境变量指向JDK安装路径。如果已经成功安装了Tomcat，则该环境变量应该已经是正确的。</li>
-<li>ANT_HOME：该环境变量应指向Ant安装路径</li>
-</ul>
-<p>按前面介绍的方式配置ANT_HOME环境变量。</p>
-<p><strong>提示</strong>：Ant安装路径就是前面释放Ant压缩文件的路径，Ant安装路径下应该包含bin、etc、lib和manual这4个文件夹</p>
-<p><strong>Step 4</strong>：Ant工具的关键命令就是<code>%ANT_HOME%/bin</code>路径下的<code>ant.bat</code>命令，如果希望操作系统可以识别该命令，还应该将%ANT_HOME%/bin路径添加到操作系统的PATH环境变量中。</p>
-<p><strong>提示</strong>：当在命令行窗口、Shell窗口输入一条命令后，操作系统会到PATH环境变量所指定的系列路径中去搜索，如果找到了该命令所对应的可执行程序，即运行该命令，否则将提示找不到命令。如果不嫌麻烦，愿意每次都输入<code>%ANT_HOME%/bin/ant.bat</code>的全路径来运行Ant工具，则无须将%ANT_HOME%/bin路径添加到PATH环境变量之中。</p>
-<p>经过上面4个步骤，Ant安装成功，启动命令行窗口，输入<code>ant.bat</code>命令，则应该可以看到如下提示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Buildfile: build.xml does not exist!</span><br><span class="line">Build failed</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-使用Ant工具"><a href="#3-使用Ant工具" class="headerlink" title="3 使用Ant工具"></a>3 使用Ant工具</h3><p>使用Ant非常简单，当正确的安装Ant后， 只要输入ant或ant.bat即可。</p>
-<p>如果运行ant命令时没有指定任何参数，Ant会在当前目录下搜索build.xml文件。如果找到了就以该文件作为生成文件，并执行默认的target。</p>
-<p>如果运行时使用-find或者-s选项（这两个选项的作用完全相同），Ant就会到上级目录中搜索生成文件，直至到达文件系统的根路径。</p>
-<p>要想让Ant使用其他生成文件，可以用<code>-buildfile&lt;生成文件&gt;</code>选项，其中<code>-buildfile</code>可以使用<code>-file</code>或<code>-f</code>来代替，这三个选项的作用完全一样。例如如下命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ant -f a.xml    &#x2F;&#x2F; 显示指定使用a.xml作为生成文件</span><br><span class="line">ant -file b.xml &#x2F;&#x2F; 显示指定使用b.xml作为生成文件</span><br></pre></td></tr></table></figure>
-
-<p>如果希望Ant运行时只输出少量的必要信息， 则可使用-quiet或-q选项：如果希望Ant运行时输出更多的提示信息，则可使用-verbose或-v选项</p>
-<p>如果希望Ant运行时将提示信息输出到指定文件，而不是直接输出到控制台，则可使用<code>-logfile&lt;file&gt;</code>或<code>-l&lt;file&gt;</code>选项。例如如下命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ant -verbose -l a.log &#x2F;&#x2F; 运行Ant时生成更多的提示信息，并将提示信息输出到a.log文件中</span><br></pre></td></tr></table></figure>
-
-<p>除此之外，Ant还允许运行时指定一些属性来覆盖生成文件中指定的属性值（使用Property task来指定），例如使用<code>-D&lt;property&gt;=&lt;value&gt;</code>，则此处指定的value将会覆盖生成文件中property的属性值。例如如下命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ant -Dbook&#x3D;Spring4  &#x2F;&#x2F; 该命令将会覆盖生成文件中的book属性值</span><br></pre></td></tr></table></figure>
-
-<p>通过该方法可以将操作系统的环境值传入生成文件，例如在运行Ant工具时使用如下命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ant -Denvl&#x3D;%ANT_HOME%</span><br></pre></td></tr></table></figure>
-
-<p>上面命令中的代码用于向生成文件中传入一个envl属性，而该属性的值并没有直接给出，而是用%ANT_HOME%的形式给出——这是Windows下访问环境变量的方式。通过这种方式，就可以将Windows环境变量值传入生成文件了，如果希望在生成文件中访问到该环境变量的值，使用$envl即可。</p>
-<p>上面命令在Linux平台上改为：<code>ant-Denvl=$ANT_HOME</code>，Linux下以$符来访问环境变量。</p>
-<p>在默认情况下，Ant将运行生成文件里指定的默认target，如果运行ant时显示指定希望运行的target，则可采用如下命令格式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ant [target1 [target2 [target3] ...]]</span><br></pre></td></tr></table></figure>
-
-<p>实际上，如果读者需要获取ant命令的更多详细情况，直接使用<code>ant -help</code>选项即可。运行<code>ant -help</code>，将看到如图所示的提示信息。</p>
-<div style="width:70%;margin:auto">
-<img src="/2020/04/25/Ant%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/1.jpg" class="" title="ant命令用法">
-</div>
-
-<h3 id="4-定义生成文件"><a href="#4-定义生成文件" class="headerlink" title="4 定义生成文件"></a>4 定义生成文件</h3>
+              Ant的安装和使用...(保姆级)
+          
       
     </div>
     
     <div class="article-info article-info-index">
       
       
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Java-EE/">Java EE</a><a class="article-category-link" href="/categories/Java-EE/Ant/">Ant</a>
-    </div>
-
 
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ant/" rel="tag">Ant</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java-EE/" rel="tag">Java EE</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2020/04/25/Ant%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/#more">阅读全文 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
