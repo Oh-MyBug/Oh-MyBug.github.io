@@ -26,6 +26,18 @@
 <meta property="og:image" content="https://oh-mybug.github.io/2020/04/23/Eclipse%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/3.jpg">
 <meta property="og:image" content="https://oh-mybug.github.io/2020/04/23/Eclipse%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/4.jpg">
 <meta property="og:image" content="https://oh-mybug.github.io/2020/04/23/Eclipse%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/4.jpg">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/04/23/Eclipse%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/5.jpg">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/04/23/Eclipse%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/6.jpg">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/04/23/Eclipse%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/7.jpg">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/04/23/Eclipse%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/8.jpg">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/04/23/Eclipse%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/9.jpg">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/04/23/Eclipse%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/10.png">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/04/23/Eclipse%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/11.jpg">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/04/23/Eclipse%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/12.jpg">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/04/23/Eclipse%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/13.png">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/04/23/Eclipse%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/14.jpg">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/04/23/Eclipse%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/15.jpg">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/04/23/Eclipse%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/16.jpg">
 <meta property="article:published_time" content="2020-04-23T12:14:49.000Z">
 <meta property="article:modified_time" content="2020-04-23T12:14:49.000Z">
 <meta property="article:author" content="Oh_MyBug">
@@ -362,6 +374,73 @@
 <h3 id="6-使用Eclipse开发Java-EE应用"><a href="#6-使用Eclipse开发Java-EE应用" class="headerlink" title="6 使用Eclipse开发Java EE应用"></a>6 使用Eclipse开发Java EE应用</h3><p>&emsp;&emsp;下面以开发一个简单的Web应用为例，介绍通过Eclipse开发Java EE应用的通用步骤。</p>
 <p>&emsp;&emsp;为了开发Web应用，必须现在Eclipse中配置Web服务器，这里以Tomcat为例介绍如何再Eclipse中配置Web服务器。再Eclipse中配置Tomcat按如下步骤进行</p>
 <p><strong>Step 1</strong>：单击Eclipse下方的“Servers”面板，在该面板的空白处单击鼠标右键，再弹出的快捷菜单中选择“New”-&gt;”Server”菜单项，如图所示。</p>
+<div style="width:70%;margin:auto">
+<img src="/2020/04/23/Eclipse%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/5.jpg" class="" title="选择添加服务器">
+</div>
+
+<p><strong>注意</strong>：如果在Eclipse下面看不到Servers面板，请通过单击Eclipse主菜单“Window”-&gt;“Open Perspective”-&gt;“Other…”来打开“Java EE”Perspective。在通常情况下，Eclipse默认打开该Perspective——因为该版本的Eclipse的默认Perspective就是“Java EE”</p>
+<p><strong>Step 2</strong>：系统弹出如图所示的对话框</p>
+<div style="width:70%;margin:auto">
+<img src="/2020/04/23/Eclipse%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/6.jpg" class="" title="选择配置Tomcat 9.0">
+</div>
+
+<p><strong>Step 3</strong>：单击“Apache”-&gt;“Tomcat v9.0 Server”节点，然后单击“Next”按钮，系统出现如图所示的对话框。</p>
+<div style="width:70%;margin:auto">
+<img src="/2020/04/23/Eclipse%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/7.jpg" class="" title="设置Tomcat的安装详情">
+</div>
+
+<p><strong>Step 4</strong>：填写Tomcat安装的详细情况，包括Tomcat的安装路径、JRE的安装路径等。填写完成后单击“Finish”按钮即可。</p>
+<p>&emsp;&emsp;建立一个Web应用，按如下步骤进行：</p>
+<p><strong>Step 1</strong>：单击Eclipse的菜单“File”-&gt;“New”-&gt;“Other…”,弹出如图所示的对话框。</p>
+<div style="width:70%;margin:auto">
+<img src="/2020/04/23/Eclipse%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/8.jpg" class="" title="新建Web项目">
+</div>
+
+<p><strong>Step 2</strong>：选择“Web”-&gt;“Dynamic Web Project”节点，然后单击“Next”按钮，将弹出如图所示的对话框。</p>
+<div style="width:70%;margin:auto">
+<img src="/2020/04/23/Eclipse%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/9.jpg" class="" title="建立Web应用">
+</div>
+
+<p><strong>Step 3</strong>：在“Project”文本框中输入项目名，并选择使用Servlet 4.0规范，最后单击“Finish”按钮，即可建立一个Web应用。</p>
+<p><strong>Step 4</strong>：右击Eclipse左边项目导航树中的“WebContent”，选择“New”-&gt;“JSP File”菜单项，如图所示，该菜单项用于创建一个JSP页面。</p>
+<div style="width:70%;margin:auto">
+<img src="/2020/04/23/Eclipse%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/10.png" class="" title="选择新建JSP页面">
+</div>
+
+<p><strong>Step 5</strong>：Eclipse弹出如图所示的创建JSP页面对话框，填写JSP页面的文件名之后，单击“Next”按钮，系统弹出图如图所示的选择JSP页面模板对话框</p>
+<div style="width:70%;margin:auto">
+<img src="/2020/04/23/Eclipse%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/11.jpg" class="" title="填写JSP页面的文件名">
+</div>
+
+<div style="width:70%;margin:auto">
+<img src="/2020/04/23/Eclipse%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/12.jpg" class="" title="选择JSP页面模板">
+</div>
+
+
+<p><strong>Step 6</strong>：选择需要使用的JSP页面模板。如果不想使用JSP页面模板，则取消勾选“<code>Use JSP Template</code>”复选框，单击“Finish”按钮，即可创建一个JSP页面</p>
+<p><strong>Step 7</strong>：编辑JSP页面。Eclipse提供了一个简单的“所见即所得”的JSP编辑环境，开发者可以通过该环境来开发JSP页面。如果要美化JSP页面，可能需要借助于其他专业工具。</p>
+<p><strong>Step 8</strong>：Web应用开发完成后，应将Web应用部署到Tomcat中进行测试。部署Web应用可通过右键单击Eclipse左边项目导航树中的该项目节点，选择“<code>Run As-&gt;Run on Server</code>”菜单项，如图所示。</p>
+<div style="width:70%;margin:auto">
+<img src="/2020/04/23/Eclipse%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/13.png" class="" title="部署Web应用和启动Web服务器菜单项">
+</div>
+
+<p><strong>Step 9</strong>：Eclipse弹出如图所示的对话框，选择将项目部署到已配置的服务器上，并选中下面的“<code>Tomcat v9.0 Server at localhost</code>”（这是在Web服务器Tomcat》所配置的Web服务器），然后单击“<code>Next</code>”按钮，系统将弹出如图所示的对话框。</p>
+<div style="width:70%;margin:auto">
+<img src="/2020/04/23/Eclipse%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/14.jpg" class="" title="部署Web项目">
+</div>
+
+<div style="width:70%;margin:auto">
+<img src="/2020/04/23/Eclipse%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/15.jpg" class="" title="选择部署Web项目">
+</div>
+
+<p><strong>Step 10</strong>：将需要部署的Web项目移动到右边列表框内，然后单击“<code>Finish</code>”按钮，Web项目部署完成。</p>
+<p><strong>Step 11</strong>：返回到Eclipse下方的“<code>Servers</code>”面板，右键单击该面板中的“<code>Tomcat v9.0 Server at localhost</code>”节点，在弹出的快捷菜单中单击“<code>Start</code>”菜单项即可启动指定的Web服务器。</p>
+<p>&emsp;&emsp;在Web服务器启动之后，在浏览器地址栏中输入刚编辑的JSP页面的URL，即可访问到该JSP页面的内容。</p>
+<div style="width:70%;margin:auto">
+<img src="/2020/04/23/Eclipse%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/16.jpg" class="" title="JSP页面内容">
+</div>
+
+<p>&emsp;&emsp;经过上面的步骤，已经开发并部署了一个简单的Web应用但该Web应用中仅有一个简单的JSP页面。</p>
 
       
     </div>
