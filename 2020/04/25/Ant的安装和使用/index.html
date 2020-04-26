@@ -452,7 +452,34 @@
 <p>例如，如下配置片段：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 定义/path/to/file2.jar、/path.to.class2和/path.to.class3所组成的路径集 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">pathelement</span> <span class="attr">path</span>=<span class="string">"/path/to/file2.jar:/path.to.class2:/path.to.class3"</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 定义由lib/helper.jar单个文件对应的目录 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">pathelement</span> <span class="attr">location</span>=<span class="string">"lib/helper.jar"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>如果需要指定多个路径集，则应该使用<code>&lt;dirset.../&gt;</code>元素，该元素需要一个dir属性，</p>
+<p>如果需要指定多个路径集，则应该使用<code>&lt;dirset.../&gt;</code>元素，该元素需要一个dir属性，dir属性指定该路径集的根路径。除此之外，dirset还可以使用<code>&lt;include.../&gt;</code>和<code>&lt;exclude.../&gt;</code>两个子元素来指定包含和不包含哪些目录，例如下面的配置片段：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 指定该路径集的根路径是build目录 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dirset</span> <span class="attr">dir</span>=<span class="string">"build"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 指定包含apps目录下的所有classes目录 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">include</span> <span class="attr">name</span>=<span class="string">"apps/**/classes"</span>/&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 指定排除目录名中有Test的目录 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">exclude</span> <span class="attr">name</span>=<span class="string">"app/**/*Test*"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dirset</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>上面的配置文件代表build/apps目录下，所有名为classes且文件名不包含Test子串的目录。</p>
+<p>如果希望配置多个文件，则可用<code>&lt;fileset.../&gt;</code>或者<code>&lt;filelist.../&gt;</code>元素，通常&lt;fileset…/&gt;元素使用模式字符串来匹配文件集，而&lt;filelist…/&gt;则通过列出文件名的方式来指定文件集。</p>
+<p>&lt;filelist…/&gt;元素需要指定如下两个属性。</p>
+<ul>
+<li>dir：指定文件集里多个文件所在的基准路径。这是一个必需的属性。</li>
+<li>files：多个文件名列表，多个文件名之间以英文逗号(,)或空白隔开。</li>
+</ul>
+<p>例如，下面的示例配置片段：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 配置src/foo.xml和src/bar.xml文件组成的文件集 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">filelist</span> <span class="attr">id</span>=<span class="string">"docfiles"</span> <span class="attr">dir</span>=<span class="string">"src"</span> <span class="attr">files</span>=<span class="string">"foo.xml,bar.xml"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>提示</strong>：几乎所有的Ant元素都可以指定两个属性：id和refid，其中id用于为该元素指定一个唯一标识，而refid用于指定引用另一个元素，例如下面的filelist配置：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">filelist</span> <span class="attr">refid</span>=<span class="string">"docfiles"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>该filelist元素包含的文件集和前面docfiles文件集里包含的文件完全一样。</p>
+<p>实际上，&lt;filelist…/&gt;还允许使用多个&lt;file…/&gt;子元素来指定文件列表，例如下面的配置片段：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">filelist</span> <span class="attr">id</span>=<span class="string">"docfiles"</span> <span class="attr">dir</span>=<span class="string">"$&#123;doc.src&#125;"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 通过i盎格file子元素指定的文件列表和通过files属性指定的效果完全一样 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">file</span> <span class="attr">name</span>=<span class="string">"foo.xml"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">file</span> <span class="attr">nmae</span>=<span class="string">"bar.xml"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">filelist</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>&lt;fileset…/&gt;元素可指定如下两个属性：</p>
+<ul>
+<li>dir：指定文件集里多个文件所在的基准路径。这里一个必需的属性</li>
+<li>casesensitive：指定是否区分大小写。默认区分大小写。</li>
+</ul>
+<p>除此之外，&lt;fileset…/&gt;元素还可以使用&lt;include…/&gt;和&lt;exclude…/&gt;两个子元素来指定包含和不包含哪些文件，例如下面的配置片段：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 定义src路径下的文件集 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">fileset</span> <span class="attr">dir</span>=<span class="string">"src"</span> <span class="attr">casesensitive</span>=<span class="string">"yes"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 包含所有的*.java文件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">include</span> <span class="attr">name</span>=<span class="string">"**/*.java"</span>/&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 排除所有的文件名中有Test子串的文件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">exclude</span> <span class="attr">name</span>=<span class="string">"**/*Test*"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">fileset</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 
       
     </div>
