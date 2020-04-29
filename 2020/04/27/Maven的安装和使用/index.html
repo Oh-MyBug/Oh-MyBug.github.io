@@ -289,13 +289,53 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="1-下载和安装Maven"><a href="#1-下载和安装Maven" class="headerlink" title="1 下载和安装Maven"></a>1 下载和安装Maven</h3><p>下载和安装Maven按如下步骤进行：</p>
+        <h3 id="1-前言"><a href="#1-前言" class="headerlink" title="1 前言"></a>1 前言</h3><p>Maven是一个比Ant更先进的项目管理工具，它采用一种“约定优于配置（CoC）”的策略来管理项目。它不仅用于把源代码构建成可发布的项目（包括编译、打包、测试和分发），还可以生成报告、生成Web站点等。</p>
+<h3 id="2-下载和安装Maven"><a href="#2-下载和安装Maven" class="headerlink" title="2 下载和安装Maven"></a>2 下载和安装Maven</h3><p>下载和安装Maven按如下步骤进行：</p>
 <p><strong>Step 1</strong>：登录<a href="http://maven.apache.org/download.cgi" target="_blank" rel="noopener">Maven站点</a>下载Maven最新版。虽然Maven是基于Java的生成工具，具有平台无关的特性，但考虑到解压缩的方便性，通常建议Windows平台下载*.zip压缩包，而Linux平台下载.gz压缩包。</p>
 <p><strong>Step 2</strong>：将下载的压缩文件解压缩到任意路径，解压缩后看到如下文件结构：</p>
 <ul>
-<li>bin：保存Maven的可执行命令。其中mvn和mvn.bat就是执行Maven工具的命令。</li>
-<li>boot：</li>
+<li>bin：保存Maven的可执行命令。其中<code>mvn</code>和<code>mvn.bat</code>就是执行Maven工具的命令。</li>
+<li>boot：该目录只包含一个<code>plexus-classworlds-2.6.0.jar</code>。<code>plexus-classworlds</code>是一个类加载器框架，与默认的Java类加载器相比，它提供了更丰富的语法以方便配置，Maven使用该框架加载自己的类库。通常无需理会。</li>
+<li>conf：保存Maven配置文件的目录，该目录包含<code>settings.xml</code>文件，该文件用于设置Maven的全局行为。通常建议将该文件复制到<code>~/.m2/</code>目录下（~表示用户目录），这样可以只设置当前用户的Maven行为。</li>
+<li>lib：该目录包含了所有Maven运行时需要的类库，Maven本身是分模块开发的，因此用户能看到诸如<code>maven-core-3.6.3.jar</code>、<code>maven-repository-metadata-3.6.3.jar</code>等文件。此外，还包含Maven所依赖的第三方类库。</li>
+<li>LICENSE、README.txt等说明文档。</li>
 </ul>
+<p><strong>Step 3</strong>：Maven的运行需要如下两个环境变量：</p>
+<ul>
+<li>JAVA_HOME：该环境变量应指向JDK安装路径。如果已经成功安装了Tomcat，则环境变量应该是已经正确的</li>
+<li>M2_HOME：该环境变量应指向Maven安装路径。</li>
+</ul>
+<p><strong>提示</strong>：Maven安装路径就是前面释放Maven压缩文件的路径。Maven安装路径下应该包含bin、boot、conf和lib4个文件夹。</p>
+<p><strong>Step 4</strong>：Maven工具的关键命令就是<code>%M2_HOME%/bin</code>路径下的<code>mvn.bat</code>命令，如果希望操作系统可以识别该命令，还应该将<code>%M2_HOME%/bin</code>路径添加到操作系统的PATH环境变量之中。</p>
+<p>经过上面4个步骤，Maven安装成功，启动命令行窗口，输入如下命令（如果未将<code>%M2_HOME%/bin</code>路径添加到操作系统的PATH环境变量之中，则输入<code>mvn.bat</code>的全路径）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn help:system</span><br></pre></td></tr></table></figure>
+
+<p>通过该命令应该先看到Maven不断地从网络下载各种文件，然后会显示如下两类信息：</p>
+<ul>
+<li>System Properties</li>
+<li>Environment Variables</li>
+</ul>
+<p>如果能看到Maven输出如上两类信息，则表明Maven安装成功。</p>
+<h3 id="3-设置Maven"><a href="#3-设置Maven" class="headerlink" title="3 设置Maven"></a>3 设置Maven</h3><p>设置Maven行为有两种方式</p>
+<ul>
+<li>全局方式：通过Maven安装目录下的<code>conf/settings.xml</code>文件进行设置</li>
+<li>当前用户方式：通过用户Home目录<code>C:\Users\用户名\</code>的<code>m2\</code>目录下的<code>settings.xml</code>文件进行设置</li>
+</ul>
+<p>上面两种方式只是起作用的范围不同，但它们都是用<code>settings.xml</code>作为配置文件，而且两种方式中<code>settings.xml</code>文件允许定义的元素也是相同的。</p>
+<p>通常来说，Maven允许设置如下参数：</p>
+<ul>
+<li>localRepository：该参数通过<code>&lt;localRepository.../&gt;</code>元素设置，该元素的内容是一个路径字符串，该路径用于设置Maven的本地资源库的路径。如果用户不设置该参数，Maven本地资源库默认保存在用户Home目录的<code>m2/repository</code>路径下。Windows系统建议将该Maven本机资源库设置到其他路径。</li>
+</ul>
+<p><strong>提示</strong>：资源库是Maven的一个重要概念，Maven构建项目所使用的插件、第三方依赖库都集中存放在本地资源库中。</p>
+<ul>
+<li>interactiveMode：该参数通过<code>&lt;interactiveMode.../&gt;</code>元素设置，该参数设置Maven是否处于交互模式——如果将Maven设为交互模式，每当Maven需要用户输入时，Maven都会提示用户输入。但如果将该参数设置为false，那么Maven将不会提示用户输入，而是“智能”地使用默认值。</li>
+<li>offline：该参数设置Maven是否处于离线状态，如果将该参数设为false，每当Maven找不到插件、依赖库时，Maven总会尝试从网络下载</li>
+<li>proxies：该参数用于为Maven设置代理服务器。该参数可包含多个<code>&lt;proxy.../&gt;</code>，每个<code>&lt;proxy.../&gt;</code>设置一个代理服务器，包括代理服务器地ID、协议、代理服务器地址、代理服务器端口、用户名、密码等信息，Maven可通过代理服务器访问网络</li>
+</ul>
+<p>如果网络通常，通常只需通过localReposity设置Maven的本地资源库路径，接下来即可正常使用Maven工具了。</p>
+<p>前面已经提到，Maven工具的命令主要就是mvn，该命令的基本格式是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn &lt;plugin-prefix&gt;:&lt;goal&gt; -D&lt;属性名&gt;&#x3D;&lt;属性值&gt; ...</span><br></pre></td></tr></table></figure>
+<p>上面mvn命令中，<code>plugin-prefix</code>是一个有效的插件前缀，goal就是该插件所包含的制定目标，-D用于为该目标指定属性，每次运行mvn命令可通过多个-D选项来指定属性名、属性值</p>
 
       
     </div>
@@ -337,7 +377,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-下载和安装Maven"><span class="toc-text">1 下载和安装Maven</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-前言"><span class="toc-text">1 前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-下载和安装Maven"><span class="toc-text">2 下载和安装Maven</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-设置Maven"><span class="toc-text">3 设置Maven</span></a></li></ol>
         
     </div>
     <style>
