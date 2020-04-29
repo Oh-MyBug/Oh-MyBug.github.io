@@ -21,11 +21,15 @@
 <meta property="og:url" content="https://oh-mybug.github.io/2020/04/27/Maven%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/index.html">
 <meta property="og:site_name" content="Oh_MyBug">
 <meta property="og:description" content="Maven...">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/04/27/Maven%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/1.jpg">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/04/27/Maven%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/2.jpg">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/04/27/Maven%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/3.jpg">
 <meta property="article:published_time" content="2020-04-27T15:07:45.000Z">
 <meta property="article:modified_time" content="2020-04-27T15:07:45.000Z">
 <meta property="article:author" content="Oh_MyBug">
 <meta property="article:tag" content="Java EE">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://oh-mybug.github.io/2020/04/27/Maven%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/1.jpg">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -336,6 +340,46 @@
 <p>前面已经提到，Maven工具的命令主要就是mvn，该命令的基本格式是：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn &lt;plugin-prefix&gt;:&lt;goal&gt; -D&lt;属性名&gt;&#x3D;&lt;属性值&gt; ...</span><br></pre></td></tr></table></figure>
 <p>上面mvn命令中，<code>plugin-prefix</code>是一个有效的插件前缀，goal就是该插件所包含的制定目标，-D用于为该目标指定属性，每次运行mvn命令可通过多个-D选项来指定属性名、属性值</p>
+<p><strong>提示</strong>：除了使用plugin-prefix的形式来代表指定插件之外，还可使用如下命令来运行指定插件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn &lt;plugin-group-id&gt;:&lt;plugin-artifact-id&gt;[:&lt;plugin-version&gt;:&lt;goal&gt;</span><br></pre></td></tr></table></figure>
+<p>其中<code>plugin-group-id</code>、<code>plugin-artifact-id</code>、<code>plugin-version</code>被称为Maven坐标，可用于唯一地表示某个项目</p>
+<p>对于前面验证Maven是否安装成功所用的命令：<code>mvn help:system</code>，其中help就是一个典型的Maven插件，system就是help插件的goal</p>
+<p><strong>提示</strong>：Maven插件是一个非常重要的概念，从某种程度来看，Maven核心是一个空的“容器”。Maven核心其实并不做什么实际的事情，它只是解析一些XML文档，管理生命周期和插件，除此之外，Maven什么也不懂。Maven的强大来自于它的插件，这些插件可以编译源代码、打包二进制代码、发布站点等。换句话说，Maven的“空”才是它的强大，因为Maven是“空”的，所以它可以装各种插件，因此它的功能可以无限扩展。直接从Apache下载的Maven不知道如何编译Java代码，不知道如何打包WAR文件，也不知道如何运行单元测试….它什么都不懂。当开发者第一次使用全新的Maven运行诸如<code>mvn install</code>命令时，Maven会自动从远程资源库下载大部分核心Maven插件。</p>
+<h3 id="4-创建、构建简单的项目"><a href="#4-创建、构建简单的项目" class="headerlink" title="4 创建、构建简单的项目"></a>4 创建、构建简单的项目</h3><p>创建项目使用Maven的archetype插件，关于Maven插件的功能和用法可登录<code>http://maven.apache.org/plugins/index.html</code>页面进行查看，该页面显示了各种Maven插件的列表。</p>
+<div style="width:70%;margin:auto">
+<img src="/2020/04/27/Maven%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/1.jpg" class="" title="查看Maven插件">
+</div>
+
+<p>其中显示了创建项目需要使用的archetype插件，单击该链接即可打开archetype插件使用说明</p>
+<div style="width:70%;margin:auto">
+<img src="/2020/04/27/Maven%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/2.jpg" class="" title="archetype插件使用说明">
+</div>
+
+<p>从图中可以看出，Maven的archetype插件包含如下目标(goal)</p>
+<ul>
+<li>archetype:generate：使用指定原型创建一个Maven项目</li>
+<li>archetype:create-from-project：使用已有的项目创建Maven项目</li>
+<li>archetype:crawl：从仓库中搜索原型</li>
+</ul>
+<p>从上面介绍可以看出，使用<code>mvn archetype:generate</code>命令即可创建Maven项目，使用该命令还需要指定一些参数（通过-D选项指定）,单击”archetype:generate”链接即可看到如图所示的参数页面。</p>
+<div style="width:70%;margin:auto">
+<img src="/2020/04/27/Maven%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/3.jpg" class="" title="archetype插件参数">
+</div>
+
+<p>上面介绍的过程就是通过官方站点查看Maven插件的过程，由于Maven支持的插件非常多，而且每个插件有可能包含多个目标，所以应该掌握Maven插件的技巧。</p>
+<p>掌握archetype插件的用法之后，即可使用如下命令来创建简单的Java项目：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn archetype:generate -DinteractiveMode&#x3D;false -DgroupId&#x3D;org.fkjava -DartifactId&#x3D;mavenQs -Dpackage&#x3D;org.fkjava.mavenqs</span><br></pre></td></tr></table></figure>
+
+<p>如果用户第一次执行该命令，将看到Maven不断地从网络下载各种文件的信息，这是Maven正从网络下载archetype插件的各种相关文件。</p>
+<p><strong>提示</strong>：实际运行该命令时，可能运行失败——只要网络状态不好，就可能无法正常从网络下载archetype插件的各种相关文件，上面命令就会下载失败，第一次执行Maven的某个插件时往往很容易失败，可以多尝试几次。</p>
+<p>上面命令执行完成后，会生成一个mavenQs文件夹，该文件夹的内容如下：</p>
+<p>上面项目中的App.java是archetype插件生成的一个简单的Java类，而AppTest则是该插件App生成的测试用力</p>
+<p>除此之外，还可以看到该项目的根路径下包含一个pom.xml文件，该文件的作用类似于Ant的build.xml文件，但它的内容比build.xml文件的内容简洁得多</p>
+<p>打开pom.xml文件可以看到如下内容：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">pom.xml文件被称为项目对象模型（Project Object Model）描述文件，Maven使用一种被称为项目对象模型的方式来管理项目，POM用于描述如下问题：该项目是什么类型的？该项目的名称是什么？该项目的构建能自定义吗？Maven使用pom.xml文件来描述项目对象模型。因此，pom.xml并不是简单的生成文件，而是一种项目对象模型的描述文件。</span><br><span class="line"></span><br><span class="line">上面所看到的pom.xml文件将是Maven项目中最简单的。一般来说，实际pom.xml文件将比这个文件更复杂：它会定义多个依赖，定义额外的插件等。上面pom.xml中的`<span class="tag">&lt;<span class="name">groupId...</span>/&gt;</span>`、`<span class="tag">&lt;<span class="name">artifactId...</span>/&gt;</span>`、`<span class="tag">&lt;<span class="name">packaging...</span>/&gt;</span>`、`<span class="tag">&lt;<span class="name">version...</span>/&gt;</span>`定义了该项目的唯一标识（几乎所有的pom.xml文件都需要定义他们），这个唯一标识被称为**Maven坐标**(**coordinate**)。`<span class="tag">&lt;<span class="name">name...</span>/&gt;</span>`和`<span class="tag">&lt;<span class="name">url...</span>/&gt;</span>`元素只是pom.xml提供的描述性元素，用于提供可阅读的名字。</span><br><span class="line"></span><br><span class="line">上面的pom.xml文件还包含了一个`<span class="tag">&lt;<span class="name">dependencies...</span>/&gt;</span>`元素，该元素定义了一个单独的测试范围的依赖，这表明该项目的测试依赖于JUnit测试框架。</span><br><span class="line"></span><br><span class="line">从上面代码可以看出，pom.xml文件仅仅包含了该项目的版本、groupId、artifactId等坐标信息。并未指定任何编译Java程序、打包、运行Java程序的详细命令。那么这份文件是否能编译、打包项目呢？</span><br><span class="line"></span><br><span class="line">在pom.xml所在路径下输入命令：</span><br></pre></td></tr></table></figure>
+<p>mvn compile</p>
+<p>```</p>
+<p>上面命令使用mvn运行compile插件的默认目标。如果用户第一次执行该命令，将可以看到Maven不断从网络下载各种文件的信息，这是Maven正从网络下载compile插件的各种相关文件。</p>
 
       
     </div>
@@ -377,7 +421,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-前言"><span class="toc-text">1 前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-下载和安装Maven"><span class="toc-text">2 下载和安装Maven</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-设置Maven"><span class="toc-text">3 设置Maven</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-前言"><span class="toc-text">1 前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-下载和安装Maven"><span class="toc-text">2 下载和安装Maven</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-设置Maven"><span class="toc-text">3 设置Maven</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-创建、构建简单的项目"><span class="toc-text">4 创建、构建简单的项目</span></a></li></ol>
         
     </div>
     <style>
