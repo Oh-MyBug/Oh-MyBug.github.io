@@ -24,6 +24,8 @@
 <meta property="og:image" content="https://oh-mybug.github.io/2020/04/27/Maven%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/1.jpg">
 <meta property="og:image" content="https://oh-mybug.github.io/2020/04/27/Maven%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/2.jpg">
 <meta property="og:image" content="https://oh-mybug.github.io/2020/04/27/Maven%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/3.jpg">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/04/27/Maven%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/4.jpg">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/04/27/Maven%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/5.png">
 <meta property="article:published_time" content="2020-04-27T15:07:45.000Z">
 <meta property="article:modified_time" content="2020-04-27T15:07:45.000Z">
 <meta property="article:author" content="Oh_MyBug">
@@ -373,13 +375,125 @@
 <p>如果用户第一次执行该命令，将看到Maven不断地从网络下载各种文件的信息，这是Maven正从网络下载archetype插件的各种相关文件。</p>
 <p><strong>提示</strong>：实际运行该命令时，可能运行失败——只要网络状态不好，就可能无法正常从网络下载archetype插件的各种相关文件，上面命令就会下载失败，第一次执行Maven的某个插件时往往很容易失败，可以多尝试几次。</p>
 <p>上面命令执行完成后，会生成一个mavenQs文件夹，该文件夹的内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">mavenQs</span><br><span class="line">├─pom.xml</span><br><span class="line">└─src</span><br><span class="line">    ├─main</span><br><span class="line">    │  └─java</span><br><span class="line">    │      └─org</span><br><span class="line">    │          └─fkjava</span><br><span class="line">    │              └─mavenqs</span><br><span class="line">    |                   └─App.java</span><br><span class="line">    └─test</span><br><span class="line">        └─java</span><br><span class="line">            └─org</span><br><span class="line">                └─fkjava</span><br><span class="line">                    └─mavenqs</span><br><span class="line">                         └─AppTest.java</span><br></pre></td></tr></table></figure>
+
 <p>上面项目中的App.java是archetype插件生成的一个简单的Java类，而AppTest则是该插件App生成的测试用力</p>
 <p>除此之外，还可以看到该项目的根路径下包含一个pom.xml文件，该文件的作用类似于Ant的build.xml文件，但它的内容比build.xml文件的内容简洁得多</p>
 <p>打开pom.xml文件可以看到如下内容：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">pom.xml文件被称为项目对象模型（Project Object Model）描述文件，Maven使用一种被称为项目对象模型的方式来管理项目，POM用于描述如下问题：该项目是什么类型的？该项目的名称是什么？该项目的构建能自定义吗？Maven使用pom.xml文件来描述项目对象模型。因此，pom.xml并不是简单的生成文件，而是一种项目对象模型的描述文件。</span><br><span class="line"></span><br><span class="line">上面所看到的pom.xml文件将是Maven项目中最简单的。一般来说，实际pom.xml文件将比这个文件更复杂：它会定义多个依赖，定义额外的插件等。上面pom.xml中的`<span class="tag">&lt;<span class="name">groupId...</span>/&gt;</span>`、`<span class="tag">&lt;<span class="name">artifactId...</span>/&gt;</span>`、`<span class="tag">&lt;<span class="name">packaging...</span>/&gt;</span>`、`<span class="tag">&lt;<span class="name">version...</span>/&gt;</span>`定义了该项目的唯一标识（几乎所有的pom.xml文件都需要定义他们），这个唯一标识被称为**Maven坐标**(**coordinate**)。`<span class="tag">&lt;<span class="name">name...</span>/&gt;</span>`和`<span class="tag">&lt;<span class="name">url...</span>/&gt;</span>`元素只是pom.xml提供的描述性元素，用于提供可阅读的名字。</span><br><span class="line"></span><br><span class="line">上面的pom.xml文件还包含了一个`<span class="tag">&lt;<span class="name">dependencies...</span>/&gt;</span>`元素，该元素定义了一个单独的测试范围的依赖，这表明该项目的测试依赖于JUnit测试框架。</span><br><span class="line"></span><br><span class="line">从上面代码可以看出，pom.xml文件仅仅包含了该项目的版本、groupId、artifactId等坐标信息。并未指定任何编译Java程序、打包、运行Java程序的详细命令。那么这份文件是否能编译、打包项目呢？</span><br><span class="line"></span><br><span class="line">在pom.xml所在路径下输入命令：</span><br></pre></td></tr></table></figure>
-<p>mvn compile</p>
-<p>```</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">"http://maven.apache.org/POM/4.0.0"</span> <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.fkjava<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mavenQs<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">packaging</span>&gt;</span>jar<span class="tag">&lt;/<span class="name">packaging</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>mavenQs<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.apache.org<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.8.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>pom.xml文件被称为项目对象模型（Project Object Model）描述文件，Maven使用一种被称为项目对象模型的方式来管理项目，POM用于描述如下问题：该项目是什么类型的？该项目的名称是什么？该项目的构建能自定义吗？Maven使用pom.xml文件来描述项目对象模型。因此，pom.xml并不是简单的生成文件，而是一种项目对象模型的描述文件。</p>
+<p>上面所看到的pom.xml文件将是Maven项目中最简单的。一般来说，实际pom.xml文件将比这个文件更复杂：它会定义多个依赖，定义额外的插件等。上面pom.xml中的<code>&lt;groupId.../&gt;</code>、<code>&lt;artifactId.../&gt;</code>、<code>&lt;packaging.../&gt;</code>、<code>&lt;version.../&gt;</code>定义了该项目的唯一标识（几乎所有的pom.xml文件都需要定义他们），这个唯一标识被称为<strong>Maven坐标</strong>(<strong>coordinate</strong>)。<code>&lt;name.../&gt;</code>和<code>&lt;url.../&gt;</code>元素只是pom.xml提供的描述性元素，用于提供可阅读的名字。</p>
+<p>上面的pom.xml文件还包含了一个<code>&lt;dependencies.../&gt;</code>元素，该元素定义了一个单独的测试范围的依赖，这表明该项目的测试依赖于JUnit测试框架。</p>
+<p>从上面代码可以看出，pom.xml文件仅仅包含了该项目的版本、groupId、artifactId等坐标信息。并未指定任何编译Java程序、打包、运行Java程序的详细命令。那么这份文件是否能编译、打包项目呢？</p>
+<p>在pom.xml所在路径下输入命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn compile</span><br></pre></td></tr></table></figure>
+
 <p>上面命令使用mvn运行compile插件的默认目标。如果用户第一次执行该命令，将可以看到Maven不断从网络下载各种文件的信息，这是Maven正从网络下载compile插件的各种相关文件。</p>
+<p>如果网络状态没有问题，Maven将会先下载compile插件，额案后即可成功执行compie插件，这样将会正常编译该项目。</p>
+<p><strong>注意</strong>：如果执行compile时出现以下报错，则在pom.xml文件中增加maven编译的jdk版本设置，maven.compiler.source和maven.compiler.target，另外java.version最好也加上。我的jdk版本是jdk-13.0.2，所以写13。</p>
+<div style="width:70%;margin:auto">
+<img src="/2020/04/27/Maven%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/4.jpg" class="" title="mvn compile报错">
+</div>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">project.build.sourceEncoding</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">project.build.sourceEncoding</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">maven.compiler.encoding</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">maven.compiler.encoding</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">java.version</span>&gt;</span>13<span class="tag">&lt;/<span class="name">java.version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">maven.compiler.source</span>&gt;</span>13<span class="tag">&lt;/<span class="name">maven.compiler.source</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">maven.compiler.target</span>&gt;</span>13<span class="tag">&lt;/<span class="name">maven.compiler.target</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>项目编译完成后，接下来可以使用Maven的exec插件来执行Java类。使用Maven执行Java程序的命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn exec:java -Dexec.mainClass&#x3D;&quot;org.fkjava.mavenqs.App&quot;</span><br></pre></td></tr></table></figure>
+
+<p>上面命令中的<code>org.fkjava.mavenqs.App</code>就是该Maven项目所生成的主类。</p>
+<p>执行上面命令，Maven将再次通过网络不断地下载exec插件所需要的各种文件，等exec插件下载完成后，成功执行该插件将可以看到如下输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello World!</span><br></pre></td></tr></table></figure>
+
+<p>上面输出的就是<code>org.fkjava.mavenqs.App</code>类中main()方法的输出结果</p>
+<p>你可能会感到好奇：Maven怎么这么神奇呢？这份pom.xml文件如此简单，Maven怎么知道如何编译项目？Maven怎么知道项目源文件放在那里？Maven怎么知道编译生成的二进制文件放在哪里？……</p>
+<p>实际上，Maven运行时pom.xml是根据设置组合来运行的，每个Maven项目的pom.xml都有一个上级pom.xml，当前项目的pom.xml的设置信息会被合并到上级pom.xml中，上级pom.xml（相当于Maven默认的pom.xml）定义了该项目大量的默认设置。如果用户希望看到Maven项目实际起作用的pom.xml（也就是上级pom.xml与当前pom.xml合并后的结果），可以运行如下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn help:effective-pom</span><br></pre></td></tr></table></figure>
+
+<p>第一次运行该命令，Maven也会不断地从网络下载一些文件，然后就会看到一个庞大的、完整的pom.xml文件，它包含Maven大量的默认设置。如果希望改变其中某些默认的设置，也可以在当前项目的pom.xml中定义对应的元素来覆盖上级pom.xml中的默认设置</p>
+<h3 id="5-Maven的核心概念"><a href="#5-Maven的核心概念" class="headerlink" title="5 Maven的核心概念"></a>5 Maven的核心概念</h3><p>从前面介绍的过程来看，只要将项目的源文件按Maven要求的规范组织，并提供pom.xml文件，即使pom.xml文件中只包含极少的信息，也依然可以使用Maven来编译项目、运行程序，甚至可以运行测试用例、打包项目，这是因为Maven采用了”约定优于配置（Convention over Configuration，CoC）”的原则，根据此原则，Maven的主要约定有如下几条。</p>
+<ul>
+<li>源代码应该位于<code>${basedir}/src/main/java</code>路径下</li>
+<li>资源文件应该位于<code>${basedir}/src/main/resourse</code>路径下</li>
+<li>测试代码应该位于<code>${basedir}/src/test</code>路径下</li>
+<li>编译生成的class文件应该位于<code>${basedir/target/classes}</code>路径下</li>
+<li>项目应该会产生一个JAR文件，并将生成的JAR包放在<code>${basedir}/target</code>路径下</li>
+</ul>
+<p>通过这种约定，就可以避免像Ant构建那牙膏必需为每个子项目定义这些目录。除此之外，Maven对核心插件也使用了一组通用的约定，用来编译源代码、打包可分发的JAR、生成Web站点，以及许多其他的过程</p>
+<p>Maven的强大很大程度来自于它的“约定”，Maven月定义了一个固定的生命周期，以及一组用于构建和装配软件的通用插件，如果完全遵守这些约定，Maven只需要将源代码放到正确的目录下，Maven即可处理剩下的事情</p>
+<p>使用CoC的一个副作用是，用户可能会觉得他们被强迫使用一种固定的流程和方法，甚至对某些约定反感。不过不用担心，所有遵守CoC原则的技术通常都会提供一种机制允许用户进行配置。以Maven为例，项目源代码的资源文件的位置可以被自定义，JAR文件的名字可以被自定义…..换句话说，如果不想遵守约定，Maven也会自定义默认值来改变约定</p>
+<h4 id="5-1-Maven的生命周期（lifecycle）"><a href="#5-1-Maven的生命周期（lifecycle）" class="headerlink" title="5.1 Maven的生命周期（lifecycle）"></a>5.1 Maven的生命周期（lifecycle）</h4><p>依然使用前面介绍的mavenQS项目，进入pom.xml文件所在的路径，然后执行如下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn install</span><br></pre></td></tr></table></figure>
+
+<p>第一次运行该命令同样会看到Maven不断地从网络下载各种插件，下载完成后可以看到该命令将会依次执行如下插件：</p>
+<p>上面命令只是告诉Maven运行install，但从实际的运行结果来看，Maven不仅运行了install，而且还在该插件之前运行了大量的插件。这就是Maven生命周期所导致的。</p>
+<p>生命周期是指Maven构建项目包含多个有序的阶段（phase），Maven可以支持许多不同的生命周期，最常用的生命周期是Maven默认的生命周期。</p>
+<p>Maven生命周期中的元素被称为phase（阶段），每个生命周期由多个阶段组成，Maven生命周期中的各阶段总是按顺序、依次执行，<strong>Maven默认的生命周期的开始阶段是验证项目的基本完整性，结束阶段是将项目发布到远程仓库</strong>。</p>
+<p>实际上，mvn命令除了可以使用<code>&lt;plugin-prefix&gt;:&lt;goal&gt;</code>运行指定插件的目标之外，还可以使用如下命令格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvm &lt;phase1&gt; &lt;phase2&gt;...</span><br></pre></td></tr></table></figure>
+
+<p>上面命令告诉Maven执行Maven生命周期中的一个或多个阶段。当使用mvn命令告诉Maven执行生命周期的某个阶段时，Maven会自动从生命周期的第一个阶段开始执行，直至mvn命令指定的阶段。</p>
+<p>Maven包含三个基本的生命周期。</p>
+<ul>
+<li>clean生命周期</li>
+<li>default生命周期</li>
+<li>site生命周期</li>
+</ul>
+<p>clean生命周期用于在构建项目之前进行一些处理工作，该生命周期包含如下三个核心阶段。</p>
+<ul>
+<li>pre-clean：在构建之前执行预清理</li>
+<li>clean：执行清理</li>
+<li>post-clean：最后清理</li>
+</ul>
+<p>进入mavenQs项目中pom.xml所在的路径，执行如下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvm post-clean</span><br></pre></td></tr></table></figure>
+
+<p>执行上面命令将会清理项目编译过程中生成的文件，执行该命令后将可以看到mavenQs目录下只剩下src目录和pom.xml文件</p>
+<p>默认的生命周期则包含了项目构建的核心部分，默认的生命周期包含如下核心阶段：</p>
+<ul>
+<li>compile：编译项目</li>
+<li>test：单元测试</li>
+<li>package：项目打包</li>
+<li>install：安装到本地仓库</li>
+<li>deploy：部署到远程仓库</li>
+</ul>
+<p><code>mvn compile</code>、<code>mvn install</code>命令所执行的都是上面列出的阶段。当使用Maven执行<code>mvn install</code>时，是即将会先执行isntall阶段之前的阶段。下图显示了默认的生命周期所包含的核心阶段的执行过程。</p>
+<div style="width:70%;margin:auto">
+<img src="/2020/04/27/Maven%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/5.png" class="" title="Maven默认生命周期的各阶段">
+</div>
+
+<p>上面列出的只是Maven默认生命周期的核心阶段。实际上，Maven默认的生命周期包含如下阶段：</p>
+<ul>
+<li>validate：验证项目是否正确</li>
+<li>generate-sources：生成源代码</li>
+<li>process-sources：处理源代码</li>
+<li>generate-resources：生成项目所需的资源文件</li>
+<li>process-resources：复制资源文件至目标目录</li>
+<li>compile：编译项目的源代码</li>
+<li>process-classes：处理编译生成的文件</li>
+<li>generate-test-sources：生成测试源代码</li>
+<li>process-test-sources：处理测试源代码</li>
+<li>generate-test-resources：生成测试的资源文件</li>
+<li>process-test-resources：复制测试的资源文件至测试目标目录</li>
+</ul>
+<p>site 生命周期用于生成项目报告站点、发布站点。该生命周期包含如下核心阶段：</p>
+<ul>
+<li>pre-site：生成站点之前做验证</li>
+<li>site：生成站点</li>
+<li>post-site：生成站点之后做验证</li>
+<li>site-deploy：发布站点到远程服务器</li>
+</ul>
+<p>进入mavenQs项目中pom.xml所在的路径，执行如下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn post-site</span><br></pre></td></tr></table></figure>
+<p>第一次执行该命令时，将会看到Maven不断地下载插件及相关文件，成功执行该命令后将可以看到mavenQs目录下多出一个target目录，该目录下包含一个site子目录。打开site子目录下的index.htm，将可以看到如图所示的页面。</p>
+<div style="width:70%;margin:auto">
+
+</div>
+
+<h4 id="5-2-插件和目标-plugins-and-goal"><a href="#5-2-插件和目标-plugins-and-goal" class="headerlink" title="5.2 插件和目标(plugins and goal)"></a>5.2 插件和目标(plugins and goal)</h4><p>除了可以使用Maven官方、第三方提供的各种插件之外，也可以开发自定义插件，通过自定义插件来完成任务。</p>
+<p>每个插件又可以包含多个可执行的目标(goal)，使用mvn命令执行指定目标的格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn &lt;plugin-prefix&gt;:&lt;goal&gt; -D&lt;属性名&gt;&#x3D;&lt;属性值&gt; ...</span><br></pre></td></tr></table></figure>
+
+<p>当使用mvn运行Maven生命周期的指定阶段时，各阶段所完成的工作其实也是由插件实现的。插件目标可以绑定到生命周期的各阶段上，每个阶段可能绑定了零个或者多个目标。随着Maven沿着生命周期的阶段移动，它会自动执行绑定在各特定阶段上的所有目标。</p>
 
       
     </div>
@@ -421,7 +535,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-前言"><span class="toc-text">1 前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-下载和安装Maven"><span class="toc-text">2 下载和安装Maven</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-设置Maven"><span class="toc-text">3 设置Maven</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-创建、构建简单的项目"><span class="toc-text">4 创建、构建简单的项目</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-前言"><span class="toc-text">1 前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-下载和安装Maven"><span class="toc-text">2 下载和安装Maven</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-设置Maven"><span class="toc-text">3 设置Maven</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-创建、构建简单的项目"><span class="toc-text">4 创建、构建简单的项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Maven的核心概念"><span class="toc-text">5 Maven的核心概念</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-Maven的生命周期（lifecycle）"><span class="toc-text">5.1 Maven的生命周期（lifecycle）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-插件和目标-plugins-and-goal"><span class="toc-text">5.2 插件和目标(plugins and goal)</span></a></li></ol></li></ol>
         
     </div>
     <style>
