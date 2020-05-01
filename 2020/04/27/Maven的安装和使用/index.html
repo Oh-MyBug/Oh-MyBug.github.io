@@ -27,6 +27,7 @@
 <meta property="og:image" content="https://oh-mybug.github.io/2020/04/27/Maven%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/4.jpg">
 <meta property="og:image" content="https://oh-mybug.github.io/2020/04/27/Maven%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/5.png">
 <meta property="og:image" content="https://oh-mybug.github.io/2020/04/27/Maven%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/6.jpg">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/04/27/Maven%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/7.jpg">
 <meta property="article:published_time" content="2020-04-27T15:07:45.000Z">
 <meta property="article:modified_time" content="2020-04-27T15:07:45.000Z">
 <meta property="article:author" content="Oh_MyBug">
@@ -570,7 +571,24 @@
 <li>import：继承父POM文件中用dependencyManagement配置的依赖，import范围只能在dependencyManagement元素中使用（为了解决多继承）</li>
 </ul>
 <p>关于Maven的依赖配置需要说明的是，Maven依赖管理具有传递性，比如配置文件设置了项目依赖于a.jar，而a.jar又依赖于b.jar，那么该项目无需显示声明依赖于b.jar，Maven会自动管理这种依赖的传递</p>
-<p>由于Maven的依赖管理具有传递性，因此有时需要用<code>&lt;exclusion.../&gt;</code>子元素排除指定的依赖，例如：</p>
+<p>由于Maven的依赖管理具有传递性，因此有时需要用<code>&lt;exclusion.../&gt;</code>子元素排除指定的依赖，例如如下配置：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.activation<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mail<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">type</span>&gt;</span>jar<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>activation<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.activation<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>上面配置指定该项目依赖于mail.jar，由于Maven的依赖具有传递性，因此Maven会自动将mail.jar以来的activation.jar也依赖进来。为了将activation.jar排除出去，即可进行如上面配置文件所示的配置。</p>
+<p>掌握依赖关系的配置方法之后，接下来可以在strut2qs项目的pom.xml文件的<code>&lt;dependencies.../&gt;</code>元素中增加如下配置：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 配置该项目依赖Struts 2 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.struts<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>struts2-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 此处指定依赖的Struts 2版本 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.5.13<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.8.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>每个框架的坐标除了可以通过该框架自身的文档获取之外，也可以登录<code>http://search.maven.org</code>站点查询</p>
+<p>进入struts2qs项目的pom.xml文件所在的路径，执行如下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn package</span><br></pre></td></tr></table></figure>
+
+<p>由于此时Maven项目中的文件组织形式符合Web应用的格式，而且pom.xml文件中&lt;packaging…/&gt;元素的值为war，因此执行上面命令将会把该项目打包成WAR包。</p>
+<p>执行上面命令同样也会从网络上下载插件和文件，当该命令执行成功后即可在target目录下看到一个struts2qs.war文件，如果用WinRAR工具解压该文件，即可看到该压缩包内<code>WEB-INF\lib</code>中包含了Struts 2框架的各种JAR包，如图。</p>
+<div style="width:70%;margin:auto">
+<img src="/2020/04/27/Maven%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/7.jpg" class="" title="Maven自动下载的Struts 2">
+</div>
+
+<p>从图中可以看出使用Maven之后，只需要在pom.xml文件中配置该项目依赖Struts 2，剩下的事情就交给Maven搞定，无需关心Struts 2的官网，无需关心从哪里下载Struts 2的JAR包，所有依赖关系都交给Maven处理即可。</p>
 
       
     </div>
