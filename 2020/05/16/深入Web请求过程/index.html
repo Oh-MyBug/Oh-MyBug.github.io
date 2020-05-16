@@ -15,32 +15,19 @@
 
 
 
-<meta name="description" content="一切为了提高用户体验，实际是为了高效写代码（假的）...">
+<meta name="description" content="当你在浏览器里单击某个链接开始，带我们的服务返回结果给浏览器为止，这个过程中到底发生了什么？">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何让IntelliJ IDEA变得高效且舒适?">
-<meta property="og:url" content="https://oh-mybug.github.io/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/index.html">
+<meta property="og:title" content="深入Web请求过程">
+<meta property="og:url" content="https://oh-mybug.github.io/2020/05/16/%E6%B7%B1%E5%85%A5Web%E8%AF%B7%E6%B1%82%E8%BF%87%E7%A8%8B/index.html">
 <meta property="og:site_name" content="Oh_MyBug">
-<meta property="og:description" content="一切为了提高用户体验，实际是为了高效写代码（假的）...">
-<meta property="og:image" content="https://oh-mybug.github.io/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/1.jpg">
-<meta property="og:image" content="https://oh-mybug.github.io/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/2.jpg">
-<meta property="og:image" content="https://oh-mybug.github.io/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/3.jpg">
-<meta property="og:image" content="https://oh-mybug.github.io/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/4.jpg">
-<meta property="og:image" content="https://oh-mybug.github.io/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/5.jpg">
-<meta property="og:image" content="https://oh-mybug.github.io/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/6.jpg">
-<meta property="og:image" content="https://oh-mybug.github.io/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/7.jpg">
-<meta property="og:image" content="https://oh-mybug.github.io/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/8.jpg">
-<meta property="og:image" content="https://oh-mybug.github.io/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/9.jpg">
-<meta property="og:image" content="https://oh-mybug.github.io/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/10.jpg">
-<meta property="og:image" content="https://oh-mybug.github.io/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/11.jpg">
-<meta property="og:image" content="https://oh-mybug.github.io/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/12.jpg">
-<meta property="og:image" content="https://oh-mybug.github.io/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/13.jpg">
-<meta property="og:image" content="https://oh-mybug.github.io/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/14.jpg">
-<meta property="article:published_time" content="2020-04-23T03:42:46.000Z">
-<meta property="article:modified_time" content="2020-04-23T03:42:46.000Z">
+<meta property="og:description" content="当你在浏览器里单击某个链接开始，带我们的服务返回结果给浏览器为止，这个过程中到底发生了什么？">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/05/16/%E6%B7%B1%E5%85%A5Web%E8%AF%B7%E6%B1%82%E8%BF%87%E7%A8%8B/1.jpg">
+<meta property="article:published_time" content="2020-05-16T09:46:51.000Z">
+<meta property="article:modified_time" content="2020-05-16T09:46:51.000Z">
 <meta property="article:author" content="Oh_MyBug">
-<meta property="article:tag" content="IDEA">
+<meta property="article:tag" content="JavaWeb">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://oh-mybug.github.io/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/1.jpg">
+<meta name="twitter:image" content="https://oh-mybug.github.io/2020/05/16/%E6%B7%B1%E5%85%A5Web%E8%AF%B7%E6%B1%82%E8%BF%87%E7%A8%8B/1.jpg">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -74,7 +61,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>如何让IntelliJ IDEA变得高效且舒适? | Oh_MyBug</title>
+<title>深入Web请求过程 | Oh_MyBug</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -264,11 +251,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-IDEA主题与插件" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-深入Web请求过程" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/" class="article-date">
-      <time datetime="2020-04-23T03:42:46.000Z" itemprop="datePublished">2020-04-23</time>
+      <a href="/2020/05/16/%E6%B7%B1%E5%85%A5Web%E8%AF%B7%E6%B1%82%E8%BF%87%E7%A8%8B/" class="article-date">
+      <time datetime="2020-05-16T09:46:51.000Z" itemprop="datePublished">2020-05-16</time>
 </a>
 
 
@@ -283,7 +270,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      如何让IntelliJ IDEA变得高效且舒适?
+      深入Web请求过程
     </h1>
   
 
@@ -294,7 +281,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaWeb/" rel="tag">JavaWeb</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -304,97 +291,13 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="设置主题、字体样式和背景色"><a href="#设置主题、字体样式和背景色" class="headerlink" title="设置主题、字体样式和背景色"></a>设置主题、字体样式和背景色</h3><h4 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h4><p>快捷键Ctrl+Alt+s，快速进入IDEA Settings，主题设置位于Appearance &amp; Behavior-&gt;Appearance-&gt;Theme</p>
+        <h3 id="1-B-S网络架构"><a href="#1-B-S网络架构" class="headerlink" title="1 B/S网络架构"></a>1 B/S网络架构</h3><p>B/S网络架构基于统一的应用层协议HTTP来交互数据，与大多数传统C/S互联网应用程序采用的<strong>长连接</strong>的交互模式不同，HTTP采用<strong>无状态的短连接</strong>的通信方式，通常情况下，一次请求就完成了一次数据交互，通常也对应一个业务逻辑，然后这次通信连接就断开了。采用这种方式是为了能够同时服务更多的用户，因为当前互联网应用每天都会处理上亿的用户请求，不可能每个用户访问一次后就一直保持这个连接。</p>
+<p>基于HTTP本身的特点，目前B/S网络架构大多采用如图所示的架构设计，既要满足海量用户的访问请求，又要保持用户的快速响应，所以现在的网络架构越来越复杂。</p>
 <div style="width:70%;margin:auto">
-<img src="/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/1.jpg" class="">
-</div>
-
-<h3 id="字体样式"><a href="#字体样式" class="headerlink" title="字体样式"></a>字体样式</h3><p>快捷键Ctrl+Alt+s，快速进入IDEA Settings，字体样式设置位于Editor-&gt;Font</p>
-<div style="width:70%;margin:auto">
-<img src="/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/2.jpg" class="">
-</div>
-
-<p>在Editor-&gt;General中设置勾选<code>Change font size wiith Crtl + Mousr Wheel</code>即可在代码界面通过Crtl+鼠标滚轮改变字体大小</p>
-<div style="width:70%;margin:auto">
-<img src="/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/3.jpg" class="">
-</div>
-
-<h3 id="特殊格式字体颜色"><a href="#特殊格式字体颜色" class="headerlink" title="特殊格式字体颜色"></a>特殊格式字体颜色</h3><p>在Editor-&gt;Color Scheme-&gt;Language Defaults中可以设置你的不同格式字体色调方案，比如说块注释、行注释的颜色你不喜欢灰色的，那么可以在这里进行颜色调整以及字体样式的选择，只需要点击对应字体区域就可以设置相对应的字体样式</p>
-<div style="width:70%;margin:auto">
-<img src="/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/4.jpg" class="">
-</div>
-
-<h3 id="设置Live-Template代码模板"><a href="#设置Live-Template代码模板" class="headerlink" title="设置Live Template代码模板"></a>设置Live Template代码模板</h3><p>为什么IDEA在代码界面直接打<code>sout</code>就会出现<code>System.out.println()</code>呢？其实就是<code>Live Template</code>的作用</p>
-<div style="width:70%;margin:auto">
-<img src="/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/5.jpg" class="">
-</div>
-
-<p>所以，我们也可以设置自己想要的快捷键高效生成代码的模板，也就是自定义代码模板。</p>
-<p><strong>Step 1</strong>: 在Editor-&gt;Live Template中的右侧<code>+</code>按钮一个模板组添加<code>Template Group</code>，名字自取(我的是<code>My Templates</code>)，然后就会新生成一个名叫<code>My Templates</code>的目录，就可以在里面添加自定义的Live Template啦!</p>
-<div style="width:70%;margin:auto">
-<img src="/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/6.jpg" class="">
-</div>
-
-<p><strong>Step 2</strong>：选择<code>My Templates</code>目录，然后同样在右侧点击<code>+</code>按钮选择<code>Live Template</code>，</p>
-<div style="width:70%;margin:auto">
-<img src="/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/7.jpg" class="">
-</div>
-
-<p>$xxx$的<code>xxx</code>就是variable，因为模板不知道$date$中需要放什么内容，所以需要点击<code>Edit variables</code>进行选择。</p>
-<div style="width:70%;margin:auto">
-<img src="/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/8.jpg" class="">
-</div>
-
-<p><strong>Step 3</strong>：在定义好模板后，我们点击最下方的蓝色字体的<code>Define</code>(新Live Template才会出现)，为模板选择适用的类别。最后点击apply,ok后，自定义的模板就创建好了。在代码界面输入<code>ff</code>就会生成对应的代码模板</p>
-<p>下面是我的代码模板：<br>其中$VAR1$代表第一个要手动输入的变量(以此类推)<br>$END$表示光标最后落的地方</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方法注释：快捷键——`ff`</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Function</span> Name: $VAR1$</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Function</span> Desc: $VAR2$</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Param</span>: $VAR3$</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span>: $VAR4$</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span>: Oh_MyBug</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Date</span>: $date$ $time$</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 类注释：快捷键——`cc`</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Function</span> Name: $VAR1$</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Function</span> Desc: $VAR2$</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Param</span>: $VAR3$</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span>: $VAR4$</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span>: Oh_MyBug</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Date</span>: $date$ $time$</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">// 生成测试方法：快捷键——`test`</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> test$VAR1$()&#123;</span><br><span class="line">     $END$</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 更新中...</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="文件代码模板"><a href="#文件代码模板" class="headerlink" title="文件代码模板"></a>文件代码模板</h3><p>在新建一个java文件的时候，文件就会自动生成一些代码比如：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ClassName</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>其实这也是模板的功劳，具体设置的地方为Editor-&gt;File and Code Templates</p>
-<div style="width:70%;margin:auto">
-<img src="/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/9.jpg" class="">
-</div>
-
-<p>以Class文件举例说明，选择Class然后对内容进行修改，下次新建一个.Java文件时编译器会自动生成以下内容的代码。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#if ($&#123;PACKAGE_NAME&#125; &amp;&amp; $&#123;PACKAGE_NAME&#125; != "")package $&#123;PACKAGE_NAME&#125;;#end</span><br><span class="line">#parse("File Header.java")</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ClassName: $&#123;NAME&#125;</span></span><br><span class="line"><span class="comment"> * Date:      $&#123;DATE&#125; $&#123;TIME&#125;</span></span><br><span class="line"><span class="comment"> * author:    Oh_MyBug</span></span><br><span class="line"><span class="comment"> * version:   V1.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> $</span>&#123;NAME&#125; &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="优秀插件"><a href="#优秀插件" class="headerlink" title="优秀插件"></a>优秀插件</h3><p>以下插件下载方法：File &gt; Settings &gt; Plugins &gt; Browse repositories… &gt; Search for “GsonFormat” &gt; Install Plugin，然后重启IDEA</p>
-<h4 id="CodeGlance"><a href="#CodeGlance" class="headerlink" title="CodeGlance"></a>CodeGlance</h4><p>CodeGlance是一款非常好用的代码地图插件，可以在代码编辑区的右侧生成一个竖向可拖动的代码缩略区，可以快速定位代码的同时，并且提供放大镜功能</p>
-<p>右侧代码缩略图效果：</p>
-<div style="width:70%;margin:auto">
-<img src="/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/10.jpg" class="">
-</div>
-
-<p>放大镜效果：</p>
-<div style="width:70%;margin:auto">
-<img src="/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/11.jpg" class="">
+<img src="/2020/05/16/%E6%B7%B1%E5%85%A5Web%E8%AF%B7%E6%B1%82%E8%BF%87%E7%A8%8B/1.jpg" class="" title="CDN架构图">
 </div>
 
 
-<h4 id="Translation"><a href="#Translation" class="headerlink" title="Translation"></a>Translation</h4><p>代码中经常遇到不认识的英文单词或者句子，很蒙蔽怎么办？</p>
-<p>Translation是一款非常好用的翻译插件，可以随时随地翻译单词、甚至一段话，从此不再需要额外打开浏览器搜索翻译网站了！</p>
-<p>我用的是有道翻译，在<a href="https://ai.youdao.com/" target="_blank" rel="noopener">官网</a>获取应用ID和密钥即可使用，有了这个插件，妈妈再也不用担心我看源码一头雾水了。</p>
-<p>翻译整段话：</p>
-<div style="width:70%;margin:auto">
-<img src="/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/12.jpg" class="">
-</div>
-
-<p>翻译逐个单词：</p>
-<div style="width:70%;margin:auto">
-<img src="/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/13.jpg" class="">
-</div>
-
-
-<h4 id="Rainbow-Brackets"><a href="#Rainbow-Brackets" class="headerlink" title="Rainbow Brackets"></a>Rainbow Brackets</h4><p>还在担心代码复杂时括号太多不知道谁跟谁是一对儿吗？Rainbow Brackets是一款可以对成对括号进行着色的插件，顾名思义“彩虹色的括号”，从此复杂代码一眼即可看穿！</p>
-<p>装完插件，括号都被染上了彩虹的颜色：</p>
-<div style="width:70%;margin:auto">
-<img src="/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/14.jpg" class="">
-</div>
-
-
-<h4 id="更新中…"><a href="#更新中…" class="headerlink" title="更新中…"></a>更新中…</h4>
       
     </div>
     
@@ -402,13 +305,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/">如何让IntelliJ IDEA变得高效且舒适?</a></p>
+        <p><span>本文标题:</span><a href="/2020/05/16/%E6%B7%B1%E5%85%A5Web%E8%AF%B7%E6%B1%82%E8%BF%87%E7%A8%8B/">深入Web请求过程</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Oh_MyBug</a></p>
-        <p><span>发布时间:</span>2020-04-23, 11:42:46</p>
-        <p><span>最后更新:</span>2020-04-23, 11:42:46</p>
+        <p><span>发布时间:</span>2020-05-16, 17:46:51</p>
+        <p><span>最后更新:</span>2020-05-16, 17:46:51</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/" title="如何让IntelliJ IDEA变得高效且舒适?">https://oh-mybug.github.io/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://oh-mybug.github.io/2020/04/23/IDEA%E4%B8%BB%E9%A2%98%E4%B8%8E%E6%8F%92%E4%BB%B6/　　作者: Oh_MyBug" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2020/05/16/%E6%B7%B1%E5%85%A5Web%E8%AF%B7%E6%B1%82%E8%BF%87%E7%A8%8B/" title="深入Web请求过程">https://oh-mybug.github.io/2020/05/16/%E6%B7%B1%E5%85%A5Web%E8%AF%B7%E6%B1%82%E8%BF%87%E7%A8%8B/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://oh-mybug.github.io/2020/05/16/%E6%B7%B1%E5%85%A5Web%E8%AF%B7%E6%B1%82%E8%BF%87%E7%A8%8B/　　作者: Oh_MyBug" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -420,16 +323,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2020/04/23/Eclipse%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/">
-                    Eclipse的安装与使用
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2020/04/22/%E8%BD%BB%E9%87%8F%E7%BA%A7JavaEE%E4%BC%81%E4%B8%9A%E5%BA%94%E7%94%A8/">
-                    Tomcat的下载和安装
+                <a href="/2020/05/09/%EC%98%88%EC%95%BD/">
+                    예약
                 </a>
             </div>
         
@@ -441,7 +338,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#设置主题、字体样式和背景色"><span class="toc-text">设置主题、字体样式和背景色</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#主题"><span class="toc-text">主题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字体样式"><span class="toc-text">字体样式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特殊格式字体颜色"><span class="toc-text">特殊格式字体颜色</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置Live-Template代码模板"><span class="toc-text">设置Live Template代码模板</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件代码模板"><span class="toc-text">文件代码模板</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优秀插件"><span class="toc-text">优秀插件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#CodeGlance"><span class="toc-text">CodeGlance</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Translation"><span class="toc-text">Translation</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Rainbow-Brackets"><span class="toc-text">Rainbow Brackets</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#更新中…"><span class="toc-text">更新中…</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-B-S网络架构"><span class="toc-text">1 B&#x2F;S网络架构</span></a></li></ol>
         
     </div>
     <style>
@@ -477,7 +374,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"如何让IntelliJ IDEA变得高效且舒适?　| Oh_MyBug　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"深入Web请求过程　| Oh_MyBug　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -514,15 +411,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2020/04/23/Eclipse%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/" title="上一篇: Eclipse的安装与使用">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2020/04/22/%E8%BD%BB%E9%87%8F%E7%BA%A7JavaEE%E4%BC%81%E4%B8%9A%E5%BA%94%E7%94%A8/" title="下一篇: Tomcat的下载和安装">
+            <a href="/2020/05/09/%EC%98%88%EC%95%BD/" title="下一篇: 예약">
                 <i class="fa fa-angle-right"></i>
             </a>
         
