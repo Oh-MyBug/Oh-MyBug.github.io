@@ -15,12 +15,12 @@
 
 
 
-<meta name="description" content="二叉树的遍历对于二叉树的遍历，在数据结构中有前序、中序、后序遍历三种遍历方法，这三种方法通常采用递归或者迭代的方式实现。无论是递归还是迭代，在遍历过程中都需要用到堆栈保存信息，如果二叉树的高用h来表示，那么这三种遍历方式所需要的空间复杂度为O(h)，时间复杂度也为O(h)。 使用递归和迭代的二叉树遍历方法的缺点  如果二叉树的高度很大，例如搜索引擎把几十亿张网页按照权重来组成二叉树的话，那么二叉树">
+<meta name="description" content="空间复杂度O(1)的二叉树遍历算法它不香吗？？？">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Morris二叉树遍历算法">
 <meta property="og:url" content="https://oh-mybug.github.io/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="Oh_MyBug">
-<meta property="og:description" content="二叉树的遍历对于二叉树的遍历，在数据结构中有前序、中序、后序遍历三种遍历方法，这三种方法通常采用递归或者迭代的方式实现。无论是递归还是迭代，在遍历过程中都需要用到堆栈保存信息，如果二叉树的高用h来表示，那么这三种遍历方式所需要的空间复杂度为O(h)，时间复杂度也为O(h)。 使用递归和迭代的二叉树遍历方法的缺点  如果二叉树的高度很大，例如搜索引擎把几十亿张网页按照权重来组成二叉树的话，那么二叉树">
+<meta property="og:description" content="空间复杂度O(1)的二叉树遍历算法它不香吗？？？">
 <meta property="og:image" content="https://oh-mybug.github.io/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/1.png">
 <meta property="og:image" content="https://oh-mybug.github.io/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/code.png">
 <meta property="og:image" content="https://oh-mybug.github.io/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/2.png">
@@ -41,6 +41,7 @@
 <meta property="article:published_time" content="2020-07-10T16:59:04.000Z">
 <meta property="article:modified_time" content="2020-07-10T16:59:04.000Z">
 <meta property="article:author" content="Oh_MyBug">
+<meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://oh-mybug.github.io/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/1.png">
 
@@ -203,7 +204,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Anaconda/" rel="tag">Anaconda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant/" rel="tag">Ant</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Eclipse/" rel="tag">Eclipse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-EE/" rel="tag">Java EE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaWeb/" rel="tag">JavaWeb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/" rel="tag">Maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Operating-System/" rel="tag">Operating System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Process/" rel="tag">Process</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Yelee/" rel="tag">Yelee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" rel="tag">单例模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
+                        <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Anaconda/" rel="tag">Anaconda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ant/" rel="tag">Ant</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Eclipse/" rel="tag">Eclipse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java-EE/" rel="tag">Java EE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaWeb/" rel="tag">JavaWeb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/" rel="tag">Maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Operating-System/" rel="tag">Operating System</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Process/" rel="tag">Process</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Yelee/" rel="tag">Yelee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" rel="tag">单例模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
                     </div>
                 </section>
                 
@@ -293,8 +294,16 @@
       
       <div class="article-info article-info-post">
         
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+    </div>
+
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
