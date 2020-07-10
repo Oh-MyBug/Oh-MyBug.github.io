@@ -15,17 +15,34 @@
 
 
 
-<meta name="description" content="试试水嘻嘻....使用Hexo + GitHub搭建个人博客">
+<meta name="description" content="二叉树的遍历对于二叉树的遍历，在数据结构中有前序、中序、后序遍历三种遍历方法，这三种方法通常采用递归或者迭代的方式实现。无论是递归还是迭代，在遍历过程中都需要用到堆栈保存信息，如果二叉树的高用h来表示，那么这三种遍历方式所需要的空间复杂度为O(h)，时间复杂度也为O(h)。 使用递归和迭代的二叉树遍历方法的缺点  如果二叉树的高度很大，例如搜索引擎把几十亿张网页按照权重来组成二叉树的话，那么二叉树">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo个人博客搭建">
-<meta property="og:url" content="https://oh-mybug.github.io/2020/04/09/Hexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/index.html">
+<meta property="og:title" content="Morris二叉树遍历算法">
+<meta property="og:url" content="https://oh-mybug.github.io/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="Oh_MyBug">
-<meta property="og:description" content="试试水嘻嘻....使用Hexo + GitHub搭建个人博客">
-<meta property="article:published_time" content="2020-04-09T13:16:25.000Z">
-<meta property="article:modified_time" content="2020-04-09T13:16:25.000Z">
+<meta property="og:description" content="二叉树的遍历对于二叉树的遍历，在数据结构中有前序、中序、后序遍历三种遍历方法，这三种方法通常采用递归或者迭代的方式实现。无论是递归还是迭代，在遍历过程中都需要用到堆栈保存信息，如果二叉树的高用h来表示，那么这三种遍历方式所需要的空间复杂度为O(h)，时间复杂度也为O(h)。 使用递归和迭代的二叉树遍历方法的缺点  如果二叉树的高度很大，例如搜索引擎把几十亿张网页按照权重来组成二叉树的话，那么二叉树">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/1.png">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/code.png">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/2.png">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/3.png">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/4.png">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/5.png">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/6.png">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/7.png">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/8.png">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/9.png">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/10.png">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/11.png">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/12.png">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/13.png">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/14.png">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/15.png">
+<meta property="og:image" content="https://oh-mybug.github.io/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/16.png">
+<meta property="article:published_time" content="2020-07-10T16:59:04.000Z">
+<meta property="article:modified_time" content="2020-07-10T16:59:04.000Z">
 <meta property="article:author" content="Oh_MyBug">
-<meta property="article:tag" content="Hexo">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://oh-mybug.github.io/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/1.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -59,7 +76,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Hexo个人博客搭建 | Oh_MyBug</title>
+<title>Morris二叉树遍历算法 | Oh_MyBug</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -249,11 +266,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-Hexo个人博客搭建" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Morris二叉树遍历算法" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2020/04/09/Hexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" class="article-date">
-      <time datetime="2020-04-09T13:16:25.000Z" itemprop="datePublished">2020-04-09</time>
+      <a href="/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/" class="article-date">
+      <time datetime="2020-07-10T16:59:04.000Z" itemprop="datePublished">2020-07-11</time>
 </a>
 
 
@@ -268,7 +285,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Hexo个人博客搭建
+      Morris二叉树遍历算法
     </h1>
   
 
@@ -278,10 +295,6 @@
         
 
         
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li></ul>
-    </div>
-
         <div class="clearfix"></div>
       </div>
       
@@ -289,65 +302,155 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="1-前期准备"><a href="#1-前期准备" class="headerlink" title="1 前期准备"></a>1 前期准备</h3><blockquote>
-<p>1.GitHub账号注册（官网：<a href="https://github.com/" target="_blank" rel="noopener">https://github.com/</a>）<br>2.Node.js下载并安装（官网：<a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a>）<br>3.Git下载并安装（官网：<a href="https://git-scm.com/" target="_blank" rel="noopener">https://git-scm.com/</a>）</p>
-</blockquote>
-<p>推荐镜像：<br>    Node.js 镜像：<a href="http://npm.taobao.org/mirrors/node" target="_blank" rel="noopener">http://npm.taobao.org/mirrors/node</a><br>    Git镜像：<a href="https://npm.taobao.org/mirrors/git-for-windows/" target="_blank" rel="noopener">https://npm.taobao.org/mirrors/git-for-windows/</a></p>
-<h3 id="2-Git配置和SSH"><a href="#2-Git配置和SSH" class="headerlink" title="2 Git配置和SSH"></a>2 Git配置和SSH</h3><h4 id="2-1-配置Git信息"><a href="#2-1-配置Git信息" class="headerlink" title="2.1 配置Git信息"></a>2.1 配置Git信息</h4><p>桌面右键点击“Git Bash Here”打开Git命令行窗口</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//配置user信息</span></span><br><span class="line">$ git config --global user.name <span class="string">"Oh-MyBug"</span>   <span class="comment">//OhMyBug改为你的GitHub用户名</span></span><br><span class="line">$ git config -- global user.email <span class="string">"OhMyBug@163.com"</span> <span class="comment">//OhMyBug@163.com改为你的邮箱地址</span></span><br><span class="line"><span class="comment">//检查配置信息是否正确</span></span><br><span class="line">$ git config --global user.name</span><br><span class="line">Oh_MyBug</span><br><span class="line"></span><br><span class="line">$ git config --global user.email </span><br><span class="line">OhMyBug@<span class="number">163</span>.com</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-2-配置SSH-key"><a href="#2-2-配置SSH-key" class="headerlink" title="2.2 配置SSH key"></a>2.2 配置SSH key</h4><p>  <strong>step 1:</strong> GitHub新建仓库，仓库名为“Oh-MyBug.github.io” </p>
-<p>  （Oh_MyBug改为你的GitHub用户名 <strong>注意：一定要是用户名</strong>！！！）</p>
-<p>  <strong>step 2:</strong> 回到Git界面，输入命令：</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">"Oh-MyBug@163.com"</span></span><br></pre></td></tr></table></figure>
-
-<p>  <strong>step 3:</strong> 打开用户文件夹C:\Users\xxx (xxx为你的电脑用户名)，找到并打开<strong>.ssh文件夹</strong>，用编译器打开<strong>id_rsa.pub文件</strong>，即可看到ssh Key内容，将其复制</p>
-<p>  <strong>step 4:</strong> 回到GitHub界面，点击你的头像选择Settings，在左侧列表中选择“SSH and GPG keys”，点击“New SSH key”按钮添加新的Key，Title自定义，Key内容即为你刚才从<strong>id_rsa.pub文件</strong>中复制的内容，然后点击”Add SSH key”即创建成功</p>
-<p>  <strong>step 5:</strong> 回到Git界面，输入命令：</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ssh git<span class="meta">@github</span>.com</span><br><span class="line">$ ssh -T git<span class="meta">@github</span>.com</span><br></pre></td></tr></table></figure>
-
-<p>  显示successfully即配置成功！</p>
-<h3 id="3-Hexo博客框架安装"><a href="#3-Hexo博客框架安装" class="headerlink" title="3 Hexo博客框架安装"></a>3 Hexo博客框架安装</h3><p><strong>step 1:</strong> Git界面输入命令：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm -v</span><br><span class="line"><span class="number">6.14</span><span class="number">.4</span></span><br></pre></td></tr></table></figure>
-
-<p>返回版本号即说明已安装（一般安装的Node自带npm）</p>
-<p><strong>step 2:</strong> Git界面（或者命令提示符cmd–比较快）输入命令：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo</span><br></pre></td></tr></table></figure>
-
-<p><strong>step 3:</strong> 安装成功后，找一个盘新建文件夹用于放置博客的配置文件等等，我选择的是”文档“文件夹来新建文件夹（文件夹名自定义，我的是”MyBlog”）</p>
-<p><strong>step 4:</strong> 关闭原来的Git界面，在”MyBlog”文件夹右键点击”Git Bash Here”进入Git界面，输入命令：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init</span><br></pre></td></tr></table></figure>
-
-<p>（安装需要点时间…耐心等待）</p>
-<p><strong>step 5:</strong> 继续输入命令：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm install</span><br><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-
-<p><strong>step 6:</strong> Git输入命令：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server <span class="comment">//通过本地地址http://localhost:4000预览博客</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>step 7:</strong> 在GitHub仓库Oh_MyBug.github.io中找到SSH：<a href="mailto:git@github.com">git@github.com</a>:Oh-MyBug/Oh-MyBug.github.io.git，然后进入”MyBlog”文件夹打开”_config.yml”文件，找到# Deployment修改内容并保存文件</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">    type: git</span><br><span class="line">    repository: git<span class="meta">@github</span>.com:Oh-MyBug/Oh-MyBug.github.io.git</span><br><span class="line">    branch: master</span><br></pre></td></tr></table></figure>
-
-<p><strong>step 8:</strong> 返回Git界面，按”Crtl + C”停止hexo server命令，输入命令：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>（本地预览看有没有问题，即step 6的步骤）</p>
-<p><strong>step 9:</strong> Git界面输入命令：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p><strong>step 10:</strong> 浏览器输入博客地址：Oh-MyBug.github.io，显示出博客界面就说明hexo博客框架搭建成功啦！！！</p>
-<h3 id="4-常见问题"><a href="#4-常见问题" class="headerlink" title="4 常见问题"></a>4 常见问题</h3><h4 id="4-1-问题一"><a href="#4-1-问题一" class="headerlink" title="4.1 问题一"></a>4.1 问题一</h4><p><strong>问题描述</strong>：使用GitHub创建好个人主页后访问报错：404  There isn’t a GitHub Pages site here.</p>
-<p><strong>问题原因</strong>：出现该问题的原因是创建的Oh-MyBug/Oh-MyBug.github.io项目中没有内容。</p>
-<p><strong>解决方案</strong>：</p>
-<p><strong>step 1:</strong> 进入仓库，点击Settings</p>
-<div align = center>
-<img src = "https://img-blog.csdnimg.cn/2020040916554143.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L09oX015QnVn,size_16,color_FFFFFF,t_70" >
+        <h3 id="二叉树的遍历"><a href="#二叉树的遍历" class="headerlink" title="二叉树的遍历"></a>二叉树的遍历</h3><p>对于二叉树的遍历，在数据结构中有<code>前序</code>、<code>中序</code>、<code>后序</code>遍历三种遍历方法，这三种方法通常采用递归或者迭代的方式实现。无论是递归还是迭代，在遍历过程中都需要用到<strong>堆栈</strong>保存信息，如果二叉树的高用h来表示，那么这三种遍历方式所需要的<strong>空间复杂度为O(h)</strong>，<strong>时间复杂度也为O(h)</strong>。</p>
+<p>使用递归和迭代的二叉树遍历方法的缺点</p>
+<ul>
+<li>如果二叉树的高度很大，例如搜索引擎把几十亿张网页按照权重来组成二叉树的话，那么二叉树的高度也要几十万左右，因此需要消耗大量的内存。</li>
+</ul>
+<h3 id="Morris遍历算法"><a href="#Morris遍历算法" class="headerlink" title="Morris遍历算法"></a>Morris遍历算法</h3><p>Morris二叉树遍历算法是时间复杂度为O(n)，空间复杂度为O(1)的遍历算法，他也有<code>前序</code>、<code>中序</code>、<code>后序</code>遍历三种遍历实现方式。</p>
+<h4 id="前序节点"><a href="#前序节点" class="headerlink" title="前序节点"></a>前序节点</h4><div style="width:70%;margin:auto">
+<img src="/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/1.png" class="">
 </div>
 
-<p><strong>step 2:</strong> 下滑页面找到GitHub Pages，点击Change theme（未设置之前是Choose theme，设置之后即可访问）</p>
-<div align = center>
-<img src = "https://img-blog.csdnimg.cn/20200409165704377.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L09oX015QnVn,size_16,color_FFFFFF,t_70" >
+<p>采用中序遍历的话，二叉树节点的访问情况如下:<br>1,2,3,4,5,6,7,8,9,10</p>
+<p>给定某个节点，在中序遍历中，直接排在它前面的节点称之为该节点的前序节点，例如节点5的前序节点就是4。</p>
+<p>在二叉树中如何查找一个节点的前序节点呢？</p>
+<ul>
+<li>如果该节点有左孩子，从左孩子开始，<ul>
+<li>如果左孩子有右节点，沿着右孩子指针一直走到底，得到的就是它的前序节点，例如节点6的左孩子是4，沿着节点4的右指针走到底，那就是节点5</li>
+<li>如果左孩子没有右节点，那么左孩子就是当前节点的前序节点</li>
+</ul>
+</li>
+<li>如果该节点没有左孩子<ul>
+<li>如果当前节点是其父节点的左孩子，那么它没有前序节点，并且它自己是首节点，例如节点1</li>
+<li>如果当前节点是其父节点的右孩子，那么它的前序节点就是它的父节点，例如节点8的前序节点是7</li>
+</ul>
+</li>
+</ul>
+<p>PS. 前序节点的右指针一定是空的</p>
+<h4 id="Morris中序遍历"><a href="#Morris中序遍历" class="headerlink" title="Morris中序遍历"></a>Morris中序遍历</h4><p>BST中算法实现：</p>
+<ul>
+<li>指定<code>cur</code>指针初始指向<code>root</code>节点</li>
+<li>当<code>cur指针的左子节点</code>为<code>NULL</code>时，说明在其左子树内没有前序节点，访问<code>cur指针</code>中的元素，<code>cur指针</code>指向<code>cur指针的右节点</code></li>
+<li>当<code>cur指针的左子节点</code>不为<code>NULL</code>时，找到<code>cur指针的前序节点</code><ul>
+<li>当<code>前序节点的右节点</code>为<code>NULL</code>时，将其指向<code>cur</code>，<code>cur</code>指向<code>cur的左节点</code></li>
+<li>当<code>前序节点的右节点</code>不为<code>NULL</code>（为<code>cur指针</code>本身）时，将其置为<code>NULL</code>，访问<code>cur指针</code>中元素，<code>cur</code>指向<code>cur的右节点</code></li>
+</ul>
+</li>
+<li>重复1，2步骤，直到<code>cur指针</code>为<code>NULL</code></li>
+</ul>
+<p>Java实现代码:</p>
+<div style="width:70%;margin:auto">
+<img src="/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/code.png" class="">
 </div>
+
+<p>实例展示：</p>
+<ul>
+<li>指定<code>cur</code>指针初始指向<code>root</code>节点6</li>
+</ul>
+<div style="width:70%;margin:auto">
+<img src="/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/2.png" class="">
+</div>
+
+<ul>
+<li>当<code>cur指针的左子节点</code>不为<code>NULL</code>(4)时，找到<code>cur指针的前序节点</code>(5)，当<code>前序节点的右节点</code>为<code>NULL</code>时，将其指向<code>cur</code>，<code>cur</code>指向<code>cur的左节点</code>(4)</li>
+</ul>
+<div style="width:70%;margin:auto">
+<img src="/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/3.png" class="">
+</div>
+
+<ul>
+<li>当<code>cur指针的左子节点</code>不为<code>NULL</code>(2)时，找到<code>cur指针的前序节点</code>(3)，当<code>前序节点的右节点</code>为<code>NULL</code>时，将其指向<code>cur</code>，<code>cur</code>指向<code>cur的左节点</code>(2)</li>
+</ul>
+<div style="width:70%;margin:auto">
+<img src="/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/4.png" class="">
+</div>
+
+<ul>
+<li>当<code>cur指针的左子节点</code>不为<code>NULL</code>(1)时，找到<code>cur指针的前序节点</code>(1)，当<code>前序节点的右节点</code>为<code>NULL</code>时，将其指向<code>cur</code>，<code>cur</code>指向<code>cur的左节点</code>(1)</li>
+</ul>
+<div style="width:70%;margin:auto">
+<img src="/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/5.png" class="">
+</div>
+
+<ul>
+<li>当<code>cur指针的左子节点</code>为<code>NULL</code>时，说明在其左子树内没有前序节点，访问<code>cur指针</code>中的元素，<code>cur指针</code>指向<code>cur指针的右节点</code>(2)</li>
+</ul>
+<div style="width:70%;margin:auto">
+<img src="/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/6.png" class="">
+</div>
+
+<ul>
+<li>当<code>cur指针的左子节点</code>不为<code>NULL</code>(1)时，找到<code>cur指针的前序节点</code>(1)，当<code>前序节点的右节点</code>不为<code>NULL</code>（为<code>cur指针</code>本身）时，将其置为<code>NULL</code>，访问<code>cur指针</code>中元素，<code>cur</code>指向<code>cur的右节点</code>(3)</li>
+</ul>
+<div style="width:70%;margin:auto">
+<img src="/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/7.png" class="">
+</div>
+
+<ul>
+<li>当<code>cur指针的左子节点</code>为<code>NULL</code>时，说明在其左子树内没有前序节点，访问<code>cur指针</code>中的元素，<code>cur指针</code>指向<code>cur指针的右节点</code>(4)</li>
+</ul>
+<div style="width:70%;margin:auto">
+<img src="/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/8.png" class="">
+</div>
+
+<ul>
+<li>当<code>cur指针的左子节点</code>不为<code>NULL</code>(2)时，找到<code>cur指针的前序节点</code>(3)，当<code>前序节点的右节点</code>不为<code>NULL</code>（为<code>cur指针</code>本身）时，将其置为<code>NULL</code>，访问<code>cur指针</code>中元素，<code>cur</code>指向<code>cur的右节点</code>(5)</li>
+</ul>
+<div style="width:70%;margin:auto">
+<img src="/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/9.png" class="">
+</div>
+
+<ul>
+<li>当<code>cur指针的左子节点</code>为<code>NULL</code>时，说明在其左子树内没有前序节点，访问<code>cur指针</code>中的元素，<code>cur指针</code>指向<code>cur指针的右节点</code>(6)</li>
+</ul>
+<div style="width:70%;margin:auto">
+<img src="/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/10.png" class="">
+</div>
+
+<ul>
+<li>当<code>cur指针的左子节点</code>不为<code>NULL</code>(4)时，找到<code>cur指针的前序节点</code>(5)，当<code>前序节点的右节点</code>不为<code>NULL</code>（为<code>cur指针</code>本身）时，将其置为<code>NULL</code>，访问<code>cur指针</code>中元素，<code>cur</code>指向<code>cur的右节点</code>(9)</li>
+</ul>
+<div style="width:70%;margin:auto">
+<img src="/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/11.png" class="">
+</div>
+
+<ul>
+<li>当<code>cur指针的左子节点</code>不为<code>NULL</code>(7)时，找到<code>cur指针的前序节点</code>(8)，当<code>前序节点的右节点</code>为<code>NULL</code>时，将其指向<code>cur</code>，<code>cur</code>指向<code>cur的左节点</code>(7)</li>
+</ul>
+<div style="width:70%;margin:auto">
+<img src="/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/12.png" class="">
+</div>
+
+<ul>
+<li>当<code>cur指针的左子节点</code>为<code>NULL</code>时，说明在其左子树内没有前序节点，访问<code>cur指针</code>中的元素，<code>cur指针</code>指向<code>cur指针的右节点</code>(8)</li>
+</ul>
+<div style="width:70%;margin:auto">
+<img src="/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/13.png" class="">
+</div>
+
+<ul>
+<li>当<code>cur指针的左子节点</code>为<code>NULL</code>时，说明在其左子树内没有前序节点，访问<code>cur指针</code>中的元素，<code>cur指针</code>指向<code>cur指针的右节点</code>(9)</li>
+</ul>
+<div style="width:70%;margin:auto">
+<img src="/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/14.png" class="">
+</div>
+
+<ul>
+<li>当<code>cur指针的左子节点</code>不为<code>NULL</code>(7)时，找到<code>cur指针的前序节点</code>(8)，当<code>前序节点的右节点</code>不为<code>NULL</code>（为<code>cur指针</code>本身）时，将其置为<code>NULL</code>，访问<code>cur指针</code>中元素，<code>cur</code>指向<code>cur的右节点</code>(10)</li>
+</ul>
+<div style="width:70%;margin:auto">
+<img src="/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/15.png" class="">
+</div>
+
+<ul>
+<li>当<code>cur指针的左子节点</code>为<code>NULL</code>时，说明在其左子树内没有前序节点，访问<code>cur指针</code>中的元素，<code>cur指针</code>指向<code>cur指针的右节点</code>(NULL)</li>
+</ul>
+<div style="width:70%;margin:auto">
+<img src="/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/16.png" class="">
+</div>
+
+
 
       
     </div>
@@ -356,13 +459,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2020/04/09/Hexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">Hexo个人博客搭建</a></p>
+        <p><span>本文标题:</span><a href="/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/">Morris二叉树遍历算法</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Oh_MyBug</a></p>
-        <p><span>发布时间:</span>2020-04-09, 21:16:25</p>
-        <p><span>最后更新:</span>2020-04-09, 21:16:25</p>
+        <p><span>发布时间:</span>2020-07-11, 00:59:04</p>
+        <p><span>最后更新:</span>2020-07-11, 00:59:04</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2020/04/09/Hexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" title="Hexo个人博客搭建">https://oh-mybug.github.io/2020/04/09/Hexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://oh-mybug.github.io/2020/04/09/Hexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/　　作者: Oh_MyBug" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/" title="Morris二叉树遍历算法">https://oh-mybug.github.io/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://oh-mybug.github.io/2020/07/11/Morris%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86%E7%AE%97%E6%B3%95/　　作者: Oh_MyBug" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -374,12 +477,12 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2020/04/11/Hexo%E4%B8%BB%E9%A2%98%E2%80%94%E2%80%94Yelee%E7%9A%84%E4%BD%BF%E7%94%A8-%E6%9B%B4%E6%96%B0%E4%B8%AD/">
-                    Hexo主题——Yelee的使用[更新中...]
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2020/07/09/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">
+                    设计模式之单例模式
                 </a>
             </div>
-        
         
     </nav>
 
@@ -389,7 +492,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-前期准备"><span class="toc-text">1 前期准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Git配置和SSH"><span class="toc-text">2 Git配置和SSH</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-配置Git信息"><span class="toc-text">2.1 配置Git信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-配置SSH-key"><span class="toc-text">2.2 配置SSH key</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Hexo博客框架安装"><span class="toc-text">3 Hexo博客框架安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-常见问题"><span class="toc-text">4 常见问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-问题一"><span class="toc-text">4.1 问题一</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#二叉树的遍历"><span class="toc-text">二叉树的遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Morris遍历算法"><span class="toc-text">Morris遍历算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#前序节点"><span class="toc-text">前序节点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Morris中序遍历"><span class="toc-text">Morris中序遍历</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -425,7 +528,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Hexo个人博客搭建　| Oh_MyBug　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Morris二叉树遍历算法　| Oh_MyBug　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -462,15 +565,15 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2020/04/11/Hexo%E4%B8%BB%E9%A2%98%E2%80%94%E2%80%94Yelee%E7%9A%84%E4%BD%BF%E7%94%A8-%E6%9B%B4%E6%96%B0%E4%B8%AD/" title="上一篇: Hexo主题——Yelee的使用[更新中...]">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2020/07/09/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" title="下一篇: 设计模式之单例模式">
+                <i class="fa fa-angle-right"></i>
+            </a>
         
     </div>
 
